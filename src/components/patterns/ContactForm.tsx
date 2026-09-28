@@ -86,7 +86,7 @@ export function ContactForm({ fields, submitLabel, altPrompt, altCta, altHref, s
             );
           })}
         </div>
-        <Button type="submit" size="md" className="mt-10 w-full">
+        <Button type="submit" size="md" className="mt-10 w-full lg:pt-1">
           {submitLabel}
         </Button>
         {submitted && (
@@ -96,8 +96,8 @@ export function ContactForm({ fields, submitLabel, altPrompt, altCta, altHref, s
         )}
       </form>
       <div className="mt-6 flex flex-col items-center justify-center gap-3 lg:flex-row">
-        <p className="text-[15px] text-link">{altPrompt}</p>
-        <Button href={altHref} variant="outline" className="h-[42px] px-5 text-base font-normal">
+        <p className="text-[15px] text-link lg:tracking-[-0.035em]">{altPrompt}</p>
+        <Button href={altHref} variant="outline" className="h-[42px] px-5 text-base font-normal lg:tracking-[-0.055em]">
           {altCta}
         </Button>
       </div>

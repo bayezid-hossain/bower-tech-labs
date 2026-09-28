@@ -14,10 +14,10 @@ type FieldProps = {
 export function Field({ id, label, required, optional, error, className, children }: FieldProps) {
   return (
     <div className={cn("flex flex-col", className)}>
-      <label htmlFor={id} className="text-[17px] font-medium leading-6 tracking-[-0.02em] text-label">
+      <label htmlFor={id} className="text-[17px] font-medium leading-6 tracking-[-0.02em] text-label lg:tracking-[-0.05em]">
         {label}
         {required && "*"}
-        {optional && <span className="ml-1 text-[11px] font-normal tracking-normal text-body">(Optional)</span>}
+        {optional && <span className="ml-1 text-[11px] font-normal tracking-normal text-body lg:leading-none">(Optional)</span>}
       </label>
       {children}
       {error && (

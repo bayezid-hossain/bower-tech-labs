@@ -17,11 +17,11 @@ export function Contact() {
             title={contactSection.title}
             titleBreakOn="always"
             subtitle={contactSection.subtitle}
-            titleClassName="text-navy-ink lg:leading-[58px]"
-            subtitleClassName="max-w-[440px] text-base lg:mt-7 lg:text-lg"
+            titleClassName="text-navy-ink lg:leading-[56px]"
+            subtitleClassName="max-w-[440px] text-base lg:mt-6 lg:text-[17px] lg:leading-6 lg:tracking-[-0.03em]"
           />
-          <BulletList items={contactSection.bullets} className="mt-6 gap-3 lg:mt-10" itemClassName="text-[15px] leading-6 text-body" />
-          <div className="mt-10 flex gap-11 lg:mt-[60px]">
+          <BulletList items={contactSection.bullets} className="mt-6 gap-3 lg:mt-[33px]" itemClassName="text-[15px] leading-6 text-body lg:tracking-[-0.035em]" />
+          <div className="mt-10 flex gap-11 lg:mt-[55px]">
             {team.map((member) => (
               <TeamMember key={member.name} member={member} />
             ))}
