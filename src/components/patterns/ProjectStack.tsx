@@ -9,8 +9,10 @@ import type { Project } from "@/types/content";
 
 type ProjectStackProps = { projects: Project[]; className?: string };
 
-/** How long one card step "owns" the scroll: long enough to swallow trackpad/wheel momentum. */
-const STEP_LOCK_MS = 900;
+/** Minimum time a card step owns the scroll (lets the smooth scroll land). */
+const STEP_MIN_MS = 650;
+/** A gesture ends only after this much silence, so trackpad/smooth-wheel momentum (often 1.5s+) can't trigger a second step. */
+const GESTURE_QUIET_MS = 200;
 const SCROLL_KEYS: Record<string, 1 | -1> = { ArrowDown: 1, PageDown: 1, " ": 1, ArrowUp: -1, PageUp: -1 };
 
 /**
@@ -60,7 +62,11 @@ export function ProjectStack({ projects, className }: ProjectStackProps) {
 
   // One card per gesture. Wheel/key/touch listeners (not scroll listeners) so the gesture can be cancelled before it moves the page.
   useEffect(() => {
-    let lockedUntil = 0;
+    let stepping = false;
+    let stepStartedAt = 0;
+    let lastInputAt = 0;
+    let minMs = STEP_MIN_MS;
+    const isLocked = (now: number) => stepping && now - stepStartedAt < minMs;
     const snapPoints = () => {
       const g = geometry();
       if (!g || !g.sticky) return null;
@@ -70,14 +76,22 @@ export function ProjectStack({ projects, className }: ProjectStackProps) {
       const points = snapPoints();
       if (!points) return false;
       const y = window.scrollY;
-      if (performance.now() < lockedUntil) {
-        // Mid-step: swallow momentum inside the stack so one flick can't carry past the next card.
-        return y >= points[0] - 2 && y <= points[points.length - 1] + 2;
+      const now = performance.now();
+      const silence = now - lastInputAt;
+      lastInputAt = now;
+      if (stepping) {
+        // Same gesture (momentum still arriving) or the step is still animating: swallow it inside the stack.
+        if (now - stepStartedAt < minMs || silence < GESTURE_QUIET_MS) {
+          return y >= points[0] - 2 && y <= points[points.length - 1] + 2;
+        }
+        stepping = false;
       }
       const target = stackSnapTarget(y, delta, points);
       if (target === null) return false;
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      lockedUntil = performance.now() + (reduce ? 80 : STEP_LOCK_MS);
+      stepping = true;
+      stepStartedAt = now;
+      minMs = reduce ? 80 : STEP_MIN_MS;
       window.scrollTo({ top: target, behavior: reduce ? "auto" : "smooth" });
       return true;
     };
@@ -110,8 +124,8 @@ export function ProjectStack({ projects, className }: ProjectStackProps) {
         return;
       }
       const points = snapPoints();
-      if (!points || performance.now() < lockedUntil) {
-        if (points && performance.now() < lockedUntil) event.preventDefault();
+      if (!points || isLocked(performance.now())) {
+        if (points && isLocked(performance.now())) event.preventDefault();
         return;
       }
       if (stackSnapTarget(window.scrollY, delta, points) !== null) {
