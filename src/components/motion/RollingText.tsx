@@ -11,7 +11,7 @@ export function RollingText({ text, className }: RollingTextProps) {
     <span className={cn("relative inline-flex overflow-hidden leading-[1.2]", className)}>
       <span className="sr-only">{text}</span>
       {Array.from(text).map((ch, i) => {
-        const glyph = ch === " " ? " " : ch;
+        const glyph = ch === " " ? "\u00a0" : ch;
         return (
           <span
             key={i}

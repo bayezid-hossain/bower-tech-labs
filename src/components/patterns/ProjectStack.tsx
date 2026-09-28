@@ -4,7 +4,6 @@ import { useMotionValueEvent, useScroll } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { activeStackIndex, stackOffsets, stackScrollTarget } from "@/lib/project-stack";
-import { FadeIn } from "@/components/motion/FadeIn";
 import { ProjectCard } from "@/components/patterns/ProjectCard";
 import type { Project } from "@/types/content";
 
@@ -67,9 +66,7 @@ export function ProjectStack({ projects, className }: ProjectStackProps) {
         // The li/wrapper boxes span the transparent tab strip too; only the tab and card body take pointer events,
         // so tabs of cards stacked beneath stay clickable.
         <li key={project.number} className="project-stack-item pointer-events-none">
-          <FadeIn>
-            <ProjectCard project={project} index={i} active={i === active} onSelect={() => select(i)} />
-          </FadeIn>
+          <ProjectCard project={project} index={i} active={i === active} onSelect={() => select(i)} />
         </li>
       ))}
     </ol>
