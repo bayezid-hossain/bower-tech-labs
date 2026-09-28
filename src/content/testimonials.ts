@@ -4,7 +4,7 @@ const quote =
   "Bower Tech Labs crafts premium UI/UX and web designs that turn visions into high-performing digital experiences—brand strategy, development, and beyond.";
 
 export const testimonialsSection = {
-  title: "What we do\nexpectionally",
+  title: "What We Do\nExceptionally",
   subtitle: "End-to-end digital craftsmanship — from brand strategy to\npixel-perfect shipped products.",
 };
 

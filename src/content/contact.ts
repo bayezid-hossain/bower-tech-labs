@@ -7,8 +7,8 @@ export const contactSection = {
     "We're a small, senior design team — UI/UX, branding, and product design, no junior handoffs. Tell us what you're building.",
   bullets: [
     "Response time: 12 hours (business hours)",
-    "We're happy to sign a NDA (if needed).",
-    "We're open for White Label - B2B contract.",
+    "We're happy to sign an NDA (if needed).",
+    "We're open to white-label / B2B contracts.",
   ],
 };
 
@@ -19,14 +19,14 @@ export const team: TeamMemberInfo[] = [
 
 export const contactForm = {
   submitLabel: "Request a Quote",
-  altPrompt: "Not Interested to submit the form?",
-  altCta: "Book a Direct call with Sales",
+  altPrompt: "Not interested in submitting the form?",
+  altCta: "Book a direct call with Sales",
   successMessage: "Thanks! We'll get back to you within 12 hours.",
   fields: [
     { name: "fullName", label: "Full Name", placeholder: "Jane Smith", kind: "input", type: "text", required: true },
-    { name: "company", label: "Company Name", placeholder: "Eg. Goggle", kind: "input", type: "text", optional: true },
+    { name: "company", label: "Company Name", placeholder: "e.g., Google", kind: "input", type: "text", optional: true },
     { name: "email", label: "Email Address", placeholder: "you@example.com", kind: "input", type: "email", required: true },
-    { name: "whatsapp", label: "What’s App Number", placeholder: "+8801753292444", kind: "input", type: "tel", optional: true },
+    { name: "whatsapp", label: "WhatsApp Number", placeholder: "+8801753292444", kind: "input", type: "tel", optional: true },
     {
       name: "service",
       label: "Service Required",

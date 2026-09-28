@@ -24,7 +24,7 @@ export function Navbar() {
           href={site.primaryCta.href}
           variant="flat"
           size="sm"
-          className="h-9 px-3.5 text-[13px] lg:h-11 lg:px-5 lg:text-[15px]"
+          className="h-9 px-[17px] text-[13px] lg:h-11 lg:px-5 lg:text-[15px]"
         >
           {site.primaryCta.label}
         </Button>

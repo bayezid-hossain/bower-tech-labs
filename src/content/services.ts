@@ -3,7 +3,7 @@ import type { Service } from "@/types/content";
 export const servicesSection = {
   title: "What We Do, Full Stop",
   subtitle:
-    "Strategy, design, and build — one team, one invoice, zero handoffs.\nFrom wireframe to live URL, you talk to the same people who actually do the work",
+    "Strategy, design, and build — one team, one invoice, zero handoffs.\nFrom wireframe to live URL, you talk to the same people who actually do the work.",
   cta: { label: "Start a Project", href: "#contact" },
 };
 
@@ -15,12 +15,12 @@ export const services: Service[] = [
   },
   {
     title: "Logo & Branding",
-    subtitle: "(Website+ Mobile App+ Dashboard",
+    subtitle: "Website, Mobile App, Dashboard",
     image: { src: "/images/services/logo-branding.jpg", alt: "Logo and branding work" },
   },
   {
     title: "Web Development",
-    subtitle: "Web Flow, Framer, +more",
+    subtitle: "Webflow, Framer, + more",
     image: { src: "/images/services/web-development.jpg", alt: "Web development work" },
   },
   {

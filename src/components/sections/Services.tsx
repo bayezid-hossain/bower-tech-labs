@@ -7,7 +7,7 @@ import { services, servicesSection } from "@/content/services";
 
 export function Services() {
   return (
-    <section id="services" aria-labelledby="services-title" className="pt-20 lg:pt-[156px]">
+    <section id="services" aria-labelledby="services-title" className="pt-[78px] lg:pt-[156px]">
       <Container>
         <Reveal>
           <SectionHeading titleId="services-title" title={servicesSection.title} subtitle={servicesSection.subtitle} />

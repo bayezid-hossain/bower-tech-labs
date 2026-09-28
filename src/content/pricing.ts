@@ -7,7 +7,7 @@ const designFeatures = [
   "Figma Prototype",
   "Design System",
   "Developer Handoff",
-  "Unlimited Revision",
+  "Unlimited Revisions",
 ];
 
 export const pricingSection = {
@@ -20,22 +20,22 @@ export const pricingSection = {
 };
 
 export const pricingPlans: PricingPlan[] = [
-  { title: "Website Design", tag: "1-5 Pages", packageName: "Lunch Package- Design Only", price: "$1550", features: designFeatures },
+  { title: "Website Design", tag: "1-5 Pages", packageName: "Launch Package – Design Only", price: "$1550", features: designFeatures },
   {
     title: "Development",
     tag: "1-5 Pages",
-    packageName: "Lunch Package",
+    packageName: "Launch Package",
     price: "$1250",
     features: [
       "UX Research",
       "Fully Responsive & Mobile-First Code",
       "CMS Integration (Blog, Products, Dashboard)",
       "SEO Basics + Lightning-Fast Performance",
-      "Smooth Animation & Micro-Interations",
+      "Smooth Animations & Micro-Interactions",
       "Clean Code + Full Developer Handoff",
-      "5 Revisions+ 30 Days Free Support",
+      "5 Revisions + 30 Days Free Support",
     ],
   },
-  { title: "Website Design", tag: "1-10 Pages", packageName: "Lunch Package- Design Only", price: "$3550", features: designFeatures },
-  { title: "Mobile App Design", tag: "1-5 Pages", packageName: "Lunch Package- Design Only", price: "$1550", features: designFeatures },
+  { title: "Website Design", tag: "1-10 Pages", packageName: "Launch Package – Design Only", price: "$3550", features: designFeatures },
+  { title: "Mobile App Design", tag: "1-5 Pages", packageName: "Launch Package – Design Only", price: "$1550", features: designFeatures },
 ];

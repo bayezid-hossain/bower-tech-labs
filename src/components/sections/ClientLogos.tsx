@@ -4,7 +4,7 @@ import { clientLogos } from "@/content/clients";
 
 export function ClientLogos() {
   return (
-    <section aria-label="Clients" className="pt-12 lg:pt-[66px]">
+    <section aria-label="Clients" className="pt-[47px] lg:pt-[66px]">
       <Marquee className="mx-auto max-w-[1010px]">
         {clientLogos.map((logo, i) => (
           <Image

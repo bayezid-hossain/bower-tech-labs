@@ -1,8 +1,8 @@
 import type { ProcessStep } from "@/types/content";
 
 export const processSection = {
-  title: "How We Works",
-  subtitle: "No agency theater, no 6-week onboarding.\nFour steps from brief to launch",
+  title: "How We Work",
+  subtitle: "No agency theater, no 6-week onboarding.\nFour steps from brief to launch.",
 };
 
 export const processSteps: ProcessStep[] = [
@@ -22,12 +22,12 @@ export const processSteps: ProcessStep[] = [
     step: "STEP 03",
     title: "You Get a Real Quote",
     description:
-      ' Fixed price, fixed timeline, fixed deliverables. No "it depends," no hidden hours, no surprise invoices later. You\'ll know exactly what you\'re paying for before you say yes',
+      'Fixed price, fixed timeline, fixed deliverables. No "it depends," no hidden hours, no surprise invoices later. You\'ll know exactly what you\'re paying for before you say yes.',
   },
   {
     step: "STEP 04",
     title: "We Build, You Watch",
     description:
-      "We Build, You Watch: Kickoff call or straight into asynchronous work—your choice. You get weekly progress updates, full Figma access, and a refined feedback loop to ensure we hit the mark fast. You're never left wondering what's happening",
+      "We Build, You Watch: Kickoff call or straight into asynchronous work—your choice. You get weekly progress updates, full Figma access, and a refined feedback loop to ensure we hit the mark fast. You're never left wondering what's happening.",
   },
 ];
