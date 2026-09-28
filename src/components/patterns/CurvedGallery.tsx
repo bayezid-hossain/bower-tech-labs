@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Marquee } from "@/components/motion/Marquee";
 import { cn } from "@/lib/cn";
 import type { ImageAsset } from "@/types/content";
 
@@ -7,7 +8,13 @@ type CurvedGalleryProps = { images: ImageAsset[]; priority?: boolean; className?
 export function CurvedGallery({ images, priority, className }: CurvedGalleryProps) {
   return (
     <div className={cn("relative h-[276px] w-full overflow-hidden bg-gutter lg:h-[612px]", className)}>
-      <div className="absolute inset-0 flex justify-center gap-[7px] lg:gap-4">
+      <Marquee
+        fade={false}
+        duration={60}
+        className="absolute inset-0"
+        innerClassName="h-full -ml-[123px] lg:-ml-[393px]"
+        trackClassName="h-full items-stretch gap-[7px] pr-[7px] lg:gap-4 lg:pr-4"
+      >
         {images.map((image, i) => (
           <div
             key={i}
@@ -23,7 +30,7 @@ export function CurvedGallery({ images, priority, className }: CurvedGalleryProp
             />
           </div>
         ))}
-      </div>
+      </Marquee>
       <svg
         aria-hidden="true"
         viewBox="0 0 1440 100"

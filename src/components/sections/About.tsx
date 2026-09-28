@@ -10,7 +10,7 @@ export function About() {
         <Reveal>
           <p className="mx-auto max-w-[1100px] text-center text-[26px] leading-8 tracking-[-0.04em] lg:text-[40px] lg:leading-[48px]">
             <span className="font-semibold text-ink">{about.lead}</span>
-            {"  "}
+            {"\u00a0 "}
             <span className="font-light text-body">{about.rest}</span>
           </p>
         </Reveal>
