@@ -101,11 +101,18 @@ body {
   .project-stack-item {
     position: sticky;
     top: 5.75rem;
+    /* Each card reserves the rest of the screen, so the next card is never half-visible below it. */
+    min-height: calc(100dvh - 5.75rem);
   }
 }
 @media (width >= 64rem) and (min-height: 720px) {
   .project-stack-item {
     position: sticky;
     top: 2.5rem;
+    min-height: calc(100dvh - 2.5rem);
   }
+}
+/* The last card needs no reserved space: the next section may follow it. */
+.project-stack-item:last-child {
+  min-height: 0;
 }

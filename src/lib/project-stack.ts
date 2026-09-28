@@ -44,3 +44,16 @@ export function stackSnapTarget(scrollY: number, delta: number, points: number[]
   if (prev === undefined) return null;
   return scrollY <= last + tolerance || scrollY + delta <= prev ? prev : null;
 }
+
+/** Silence that ends a scroll gesture, so trackpad/smooth-wheel momentum (often 1.5s+) can't trigger a second step. */
+export const GESTURE_QUIET_MS = 200;
+
+/**
+ * Whether a scroll input starts a new gesture rather than continuing momentum. Momentum keeps its direction and
+ * decays; a pause, a direction change or a noticeably stronger push is the user asking again.
+ */
+export function isNewGesture(delta: number, previousDelta: number, silenceMs: number): boolean {
+  if (silenceMs >= GESTURE_QUIET_MS) return true;
+  if (Math.sign(delta) !== Math.sign(previousDelta)) return true;
+  return Math.abs(delta) > Math.abs(previousDelta) * 1.5 + 4;
+}

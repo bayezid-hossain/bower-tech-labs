@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { activeStackIndex, stackOffsets, stackScrollTarget, stackSnapTarget } from "./project-stack";
+import { activeStackIndex, isNewGesture, stackOffsets, stackScrollTarget, stackSnapTarget } from "./project-stack";
 
 // Four cards 600px tall with a 24px gap; the list starts at y=4000; cards stick at top 40px.
 const offsets = stackOffsets([600, 600, 600, 600], 24);
@@ -71,5 +71,25 @@ describe("stackSnapTarget", () => {
   it("ignores empty stacks and zero deltas", () => {
     expect(stackSnapTarget(1000, 40, [])).toBeNull();
     expect(stackSnapTarget(1000, 0, points)).toBeNull();
+  });
+});
+
+describe("isNewGesture", () => {
+  it("treats decaying same-direction input without a pause as momentum", () => {
+    expect(isNewGesture(80, 100, 16)).toBe(false);
+    expect(isNewGesture(-3, -5, 16)).toBe(false);
+  });
+  it("treats steady same-strength input (a spinning wheel) as the same gesture", () => {
+    expect(isNewGesture(100, 100, 60)).toBe(false);
+  });
+  it("starts a new gesture after a pause", () => {
+    expect(isNewGesture(10, 100, 200)).toBe(true);
+  });
+  it("starts a new gesture on direction change", () => {
+    expect(isNewGesture(-20, 40, 16)).toBe(true);
+  });
+  it("starts a new gesture on a noticeably stronger push", () => {
+    expect(isNewGesture(120, 20, 16)).toBe(true);
+    expect(isNewGesture(24, 20, 16)).toBe(false);
   });
 });

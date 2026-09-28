@@ -3,7 +3,7 @@
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
-import { activeStackIndex, stackOffsets, stackScrollTarget, stackSnapTarget } from "@/lib/project-stack";
+import { activeStackIndex, isNewGesture, stackOffsets, stackScrollTarget, stackSnapTarget } from "@/lib/project-stack";
 import { ProjectCard } from "@/components/patterns/ProjectCard";
 import type { Project } from "@/types/content";
 
@@ -11,8 +11,7 @@ type ProjectStackProps = { projects: Project[]; className?: string };
 
 /** Minimum time a card step owns the scroll (lets the smooth scroll land). */
 const STEP_MIN_MS = 650;
-/** A gesture ends only after this much silence, so trackpad/smooth-wheel momentum (often 1.5s+) can't trigger a second step. */
-const GESTURE_QUIET_MS = 200;
+
 const SCROLL_KEYS: Record<string, 1 | -1> = { ArrowDown: 1, PageDown: 1, " ": 1, ArrowUp: -1, PageUp: -1 };
 
 /**
@@ -65,6 +64,7 @@ export function ProjectStack({ projects, className }: ProjectStackProps) {
     let stepping = false;
     let stepStartedAt = 0;
     let lastInputAt = 0;
+    let lastDelta = 0;
     let minMs = STEP_MIN_MS;
     const isLocked = (now: number) => stepping && now - stepStartedAt < minMs;
     const snapPoints = () => {
@@ -78,15 +78,22 @@ export function ProjectStack({ projects, className }: ProjectStackProps) {
       const y = window.scrollY;
       const now = performance.now();
       const silence = now - lastInputAt;
+      const previousDelta = lastDelta;
       lastInputAt = now;
+      lastDelta = delta;
+      const target = stackSnapTarget(y, delta, points);
       if (stepping) {
-        // Same gesture (momentum still arriving) or the step is still animating: swallow it inside the stack.
-        if (now - stepStartedAt < minMs || silence < GESTURE_QUIET_MS) {
-          return y >= points[0] - 2 && y <= points[points.length - 1] + 2;
+        // The card is still animating into place: swallow input inside the stack.
+        if (now - stepStartedAt < minMs) return y >= points[0] - 2 && y <= points[points.length - 1] + 2;
+        // Settled. Scrolling outward past the first/last card always releases the page, even mid-gesture.
+        if (target === null) {
+          stepping = false;
+          return false;
         }
+        // Momentum from the gesture that caused the step: swallow it so one flick can't carry past the next card.
+        if (!isNewGesture(delta, previousDelta, silence)) return true;
         stepping = false;
       }
-      const target = stackSnapTarget(y, delta, points);
       if (target === null) return false;
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       stepping = true;
