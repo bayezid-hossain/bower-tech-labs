@@ -18,6 +18,7 @@ Full spec: `docs/superpowers/specs/2026-09-28-bower-landing-design.md`.
 - Inter via `next/font/google`
 - Playwright for visual verification
 - No backend. The contact form is client-side only.
+- Python 3 + Pillow for `scripts/` (asset extraction, visual diff)
 
 ## Commands
 
@@ -25,7 +26,9 @@ Full spec: `docs/superpowers/specs/2026-09-28-bower-landing-design.md`.
 npm run dev           # local dev server
 npm run build         # production build (must pass)
 npm run lint          # lint (must pass)
+npm run test          # vitest unit tests
 npm run test:visual   # screenshots at 1440 + 375, diffs vs design PNGs -> tests/visual/output/
+npm run assets        # re-extract brand assets from the design
 ```
 
 ## Structure
@@ -47,7 +50,7 @@ tests/visual/
 
 - `ui/` = content-agnostic primitives with variants. `patterns/` = composites that take props. `sections/` = thin page composition.
 - No copy hardcoded in components. It lives in `src/content/`.
-- No ad-hoc hex values or magic numbers in JSX. Colors, radii, spacing, and type scale go in `tailwind.config.ts` tokens.
+- No ad-hoc hex values in JSX. Colors, shadows, gradients and animations are tokens in the Tailwind v4 `@theme` block in `src/app/globals.css`.
 - Use `cn()` (`src/lib/cn.ts`) for class merging.
 - Components must be reusable: typed props, sensible defaults, `className` passthrough.
 

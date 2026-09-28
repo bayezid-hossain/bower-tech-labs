@@ -122,7 +122,7 @@ Rules:
 - `patterns/` combine primitives and take data via props.
 - `sections/` are thin: they read from `content/` and lay out patterns.
 - Copy lives only in `content/`, never hardcoded in components.
-- Design tokens live in `tailwind.config.ts` (`theme.extend`), never as ad-hoc hex values in JSX.
+- Design tokens live in the Tailwind v4 `@theme` block in `src/app/globals.css`, never as ad-hoc hex values in JSX.
 
 ## Design Tokens
 
