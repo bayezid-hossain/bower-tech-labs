@@ -87,3 +87,17 @@ body {
   width: calc((100% - (var(--per-page) - 1) * 1.5rem) / var(--per-page));
   scroll-snap-align: start;
 }
+
+/* Our Projects: cards pin and stack; each tab stays visible (tabs are staggered 80px). */
+@media (min-height: 760px) {
+  .project-stack-item {
+    position: sticky;
+    top: 1rem;
+  }
+}
+@media (width >= 64rem) and (min-height: 720px) {
+  .project-stack-item {
+    position: sticky;
+    top: 2.5rem;
+  }
+}
