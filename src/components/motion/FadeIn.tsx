@@ -11,7 +11,7 @@ type FadeInProps = {
   delay?: number;
   /** Starting offset in px (trexalab uses 10–20). */
   y?: number;
-  /** "mount" plays on load (above-the-fold); "inView" plays once when scrolled into view. */
+  /** Both replay on every viewport entry; "mount" (above-the-fold) triggers as soon as any part is visible. */
   trigger?: "inView" | "mount";
   className?: string;
   children: ReactNode;
@@ -22,7 +22,9 @@ export function FadeIn({ as = "div", delay = 0, y = 20, trigger = "inView", clas
   const reduce = useReducedMotion();
   const Tag = tags[as];
   const shown = { opacity: 1, y: 0, transition: { type: "spring" as const, bounce: 0, duration: 1.6, delay } };
-  const play = trigger === "mount" ? { animate: shown } : { whileInView: shown, viewport: { once: true, amount: 0.2 } };
+  // Replays every time the element re-enters the viewport. "mount" content (hero) is already in view on load,
+  // so it plays immediately and stays shown until it has fully left the screen.
+  const play = { whileInView: shown, viewport: { once: false, amount: trigger === "mount" ? 0 : 0.2 } };
   return (
     <Tag className={className} initial={reduce ? false : { opacity: 0, y }} {...play}>
       {children}

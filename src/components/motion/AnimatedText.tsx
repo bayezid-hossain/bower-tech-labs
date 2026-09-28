@@ -30,7 +30,9 @@ export function AnimatedText({ text, as = "span", id, className, delay = 0, trig
   const reduce = useReducedMotion();
   const Tag = tags[as];
   const container: Variants = { hidden: {}, visible: { transition: { staggerChildren: 0.05, delayChildren: delay } } };
-  const play = trigger === "mount" ? { animate: "visible" } : { whileInView: "visible", viewport: { once: true, amount: 0.3 } };
+  // Replays every time the element re-enters the viewport. "mount" content (hero) is already in view on load,
+  // so it plays immediately and stays shown until it has fully left the screen.
+  const play = { whileInView: "visible", viewport: { once: false, amount: trigger === "mount" ? 0 : 0.3 } };
 
   return (
     <Tag id={id} className={className} variants={container} initial={reduce ? false : "hidden"} {...play}>

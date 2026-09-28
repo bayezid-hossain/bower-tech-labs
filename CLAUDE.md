@@ -70,7 +70,7 @@ Never modify `assets/`. Copy files into `public/` with kebab-case names.
 
 ## Motion
 
-Framer Motion (motion/react), trexalab.com-style: word-by-word text reveal (AnimatedText), spring fade-ups (FadeIn), letter-roll button hover (RollingText, CSS). Also the logo marquee, draggable auto-scrolling curved galleries, paged carousels (dots + disabled ends), and sticky stacking project cards with clickable tabs. All user-requested additions beyond the static design. Reduced motion shows final states immediately. The resting state must equal the design (exception: inactive project tabs are light blue).
+Framer Motion (motion/react), trexalab.com-style: word-by-word text reveal (AnimatedText), spring fade-ups (FadeIn), letter-roll button hover (RollingText, CSS). Also the logo marquee, draggable auto-scrolling curved galleries, paged carousels (dots + disabled ends), and sticky stacking project cards with clickable tabs (one card per wheel/key/swipe gesture; stacking needs ≥720px viewport height on desktop, ≥780px on phones). Text/fade reveals replay every time they re-enter the viewport. All user-requested additions beyond the static design. Reduced motion shows final states immediately. The resting state must equal the design (exception: inactive project tabs are light blue).
 
 ## Verification Before "Done"
 

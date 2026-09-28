@@ -58,7 +58,7 @@ export function ProjectStack({ projects, className }: ProjectStackProps) {
     };
   }, [update]);
 
-  // One card per gesture. Wheel/key listeners (not scroll listeners) so the gesture can be cancelled before it moves the page.
+  // One card per gesture. Wheel/key/touch listeners (not scroll listeners) so the gesture can be cancelled before it moves the page.
   useEffect(() => {
     let lockedUntil = 0;
     const snapPoints = () => {
@@ -93,11 +93,54 @@ export function ProjectStack({ projects, className }: ProjectStackProps) {
       const sign = event.key === " " && event.shiftKey ? -1 : direction;
       if (step(sign * window.innerHeight * 0.8)) event.preventDefault();
     };
+    // Touch: one swipe = one card. The swipe is held (no native scroll) once it would move within/into the stack,
+    // then committed on release if it travelled far enough.
+    let touchStartY: number | null = null;
+    let touchHeld = false;
+    const SWIPE_MIN = 30;
+    const onTouchStart = (event: TouchEvent) => {
+      touchStartY = event.touches.length === 1 ? event.touches[0].clientY : null;
+      touchHeld = false;
+    };
+    const onTouchMove = (event: TouchEvent) => {
+      if (touchStartY === null) return;
+      const delta = touchStartY - event.touches[0].clientY; // > 0 = swiping up = scrolling down
+      if (touchHeld) {
+        event.preventDefault();
+        return;
+      }
+      const points = snapPoints();
+      if (!points || performance.now() < lockedUntil) {
+        if (points && performance.now() < lockedUntil) event.preventDefault();
+        return;
+      }
+      if (stackSnapTarget(window.scrollY, delta, points) !== null) {
+        touchHeld = true;
+        event.preventDefault();
+      }
+    };
+    const onTouchEnd = (event: TouchEvent) => {
+      if (touchStartY !== null && touchHeld) {
+        const delta = touchStartY - event.changedTouches[0].clientY;
+        if (Math.abs(delta) >= SWIPE_MIN) step(delta);
+      }
+      touchStartY = null;
+      touchHeld = false;
+    };
+
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("touchend", onTouchEnd);
+    window.addEventListener("touchcancel", onTouchEnd);
     return () => {
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("touchcancel", onTouchEnd);
     };
   }, [geometry]);
 
