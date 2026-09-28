@@ -10,6 +10,13 @@ type DraggableMarqueeProps = {
   label: string;
   /** Auto-scroll speed in px/s. */
   speed?: number;
+  /**
+   * "start": the first copy starts at the left edge.
+   * "center": the first copy's content (excluding its trailing gap) is centered in the viewport.
+   * Pass the content width per breakpoint as `--marquee-content-width` in `className` so the
+   * centering is correct in CSS before hydration; once mounted it is re-measured from the DOM.
+   */
+  align?: "start" | "center";
   className?: string;
   innerClassName?: string;
   trackClassName?: string;
@@ -29,6 +36,7 @@ export function DraggableMarquee({
   children,
   label,
   speed = 40,
+  align = "start",
   className,
   innerClassName,
   trackClassName,
@@ -44,6 +52,7 @@ export function DraggableMarquee({
     if (!root || !inner || !track) return;
 
     let offset = 0;
+    let base = 0;
     let period = 0;
     let pitch = 0;
     let hovered = false;
@@ -62,11 +71,19 @@ export function DraggableMarquee({
       const first = track.firstElementChild as HTMLElement | null;
       const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
       pitch = first ? first.offsetWidth + gap : 0;
+      if (align === "center") {
+        const trailingGap = parseFloat(getComputedStyle(track).paddingRight) || 0;
+        root.style.setProperty("--marquee-content-width", `${period - trailingGap}px`);
+      }
+      // Static alignment (the CSS margin); `offset` is the user/auto-scroll part on top of it.
+      base = parseFloat(getComputedStyle(inner).marginLeft) || 0;
     };
 
     const render = () => {
-      const x = wrapOffset(offset, period);
-      inner.style.transform = x === 0 ? "" : `translate3d(${x}px,0,0)`;
+      // Wrap the total position into (-period, 0] so the left edge is always covered,
+      // then remove the margin that CSS already applies.
+      const x = wrapOffset(base + offset, period) - base;
+      inner.style.transform = Math.abs(x) < 0.01 ? "" : `translate3d(${x}px,0,0)`;
     };
 
     const startSnap = (to: number, now: number) => {
@@ -159,6 +176,7 @@ export function DraggableMarquee({
       render();
     });
     resizeObserver.observe(track);
+    resizeObserver.observe(root);
 
     root.addEventListener("pointerdown", onPointerDown);
     root.addEventListener("pointermove", onPointerMove);
@@ -190,7 +208,7 @@ export function DraggableMarquee({
       document.removeEventListener("visibilitychange", onVisibility);
       motionQuery.removeEventListener("change", onMotionChange);
     };
-  }, [speed]);
+  }, [speed, align]);
 
   return (
     <div
@@ -205,7 +223,14 @@ export function DraggableMarquee({
         className,
       )}
     >
-      <div ref={innerRef} className={cn("flex w-max will-change-transform", innerClassName)}>
+      <div
+        ref={innerRef}
+        className={cn(
+          "flex w-max will-change-transform",
+          align === "center" && "ml-[calc((100%-var(--marquee-content-width,100%))/2)]",
+          innerClassName,
+        )}
+      >
         <div ref={trackRef} className={cn("flex shrink-0 items-center", trackClassName)}>
           {children}
         </div>

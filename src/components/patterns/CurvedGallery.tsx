@@ -22,8 +22,10 @@ export function CurvedGallery({
       <div className="absolute inset-0 overflow-hidden bg-gutter">
         <DraggableMarquee
           label={label}
-          className="absolute inset-0"
-          innerClassName="h-full -ml-[123px] lg:-ml-[393px]"
+          align="center"
+          // 4 panels + 3 gaps: 4*306 + 3*7 = 1245 (mobile), 4*544 + 3*16 = 2224 (desktop).
+          className="absolute inset-0 [--marquee-content-width:1245px] lg:[--marquee-content-width:2224px]"
+          innerClassName="h-full"
           trackClassName="h-full items-stretch gap-[7px] pr-[7px] lg:gap-4 lg:pr-4"
         >
           {images.map((image, i) => (
