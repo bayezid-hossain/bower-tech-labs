@@ -24,3 +24,23 @@ export function activeStackIndex(scrollY: number, listTop: number, offsets: numb
 export function stackScrollTarget(listTop: number, offsets: number[], index: number, stickyTop: number): number {
   return Math.max(0, listTop + (offsets[index] ?? 0) - stickyTop);
 }
+
+/**
+ * One-card-per-gesture snapping. `points` are the scroll positions where each card sits on top of the stack.
+ * Returns where a scroll gesture of `delta` px (sign = direction) should land, or null to let the page scroll normally.
+ * Inside the stack every gesture moves exactly one card; outside it the page scrolls freely until a gesture would
+ * cross into the stack; past the first/last card it releases so the section can be left.
+ */
+export function stackSnapTarget(scrollY: number, delta: number, points: number[], tolerance = 2): number | null {
+  if (points.length === 0 || delta === 0) return null;
+  const first = points[0];
+  const last = points[points.length - 1];
+  if (delta > 0) {
+    const next = points.find((p) => p > scrollY + tolerance);
+    if (next === undefined) return null;
+    return scrollY >= first - tolerance || scrollY + delta >= next ? next : null;
+  }
+  const prev = [...points].reverse().find((p) => p < scrollY - tolerance);
+  if (prev === undefined) return null;
+  return scrollY <= last + tolerance || scrollY + delta <= prev ? prev : null;
+}

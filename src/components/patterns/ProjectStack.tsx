@@ -3,13 +3,20 @@
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
-import { activeStackIndex, stackOffsets, stackScrollTarget } from "@/lib/project-stack";
+import { activeStackIndex, stackOffsets, stackScrollTarget, stackSnapTarget } from "@/lib/project-stack";
 import { ProjectCard } from "@/components/patterns/ProjectCard";
 import type { Project } from "@/types/content";
 
 type ProjectStackProps = { projects: Project[]; className?: string };
 
-/** Sticky stacking project list; tabs bring any card back to the top of the stack. */
+/** How long one card step "owns" the scroll: long enough to swallow trackpad/wheel momentum. */
+const STEP_LOCK_MS = 900;
+const SCROLL_KEYS: Record<string, 1 | -1> = { ArrowDown: 1, PageDown: 1, " ": 1, ArrowUp: -1, PageUp: -1 };
+
+/**
+ * Sticky stacking project list. While the stack is engaged, each scroll gesture (wheel, trackpad, keys)
+ * moves exactly one card; tabs bring any card back to the top of the stack.
+ */
 export function ProjectStack({ projects, className }: ProjectStackProps) {
   const listRef = useRef<HTMLOListElement>(null);
   const [active, setActive] = useState(0);
@@ -27,6 +34,7 @@ export function ProjectStack({ projects, className }: ProjectStackProps) {
       ),
       // "auto" when stacking is off (short viewports) -> scroll to the card's top.
       stickyTop: Number.isFinite(top) ? top : 0,
+      sticky: Number.isFinite(top),
     };
   }, []);
 
@@ -49,6 +57,49 @@ export function ProjectStack({ projects, className }: ProjectStackProps) {
       window.removeEventListener("resize", update);
     };
   }, [update]);
+
+  // One card per gesture. Wheel/key listeners (not scroll listeners) so the gesture can be cancelled before it moves the page.
+  useEffect(() => {
+    let lockedUntil = 0;
+    const snapPoints = () => {
+      const g = geometry();
+      if (!g || !g.sticky) return null;
+      return g.offsets.map((_, i) => stackScrollTarget(g.listTop, g.offsets, i, g.stickyTop));
+    };
+    const step = (delta: number): boolean => {
+      const points = snapPoints();
+      if (!points) return false;
+      const y = window.scrollY;
+      if (performance.now() < lockedUntil) {
+        // Mid-step: swallow momentum inside the stack so one flick can't carry past the next card.
+        return y >= points[0] - 2 && y <= points[points.length - 1] + 2;
+      }
+      const target = stackSnapTarget(y, delta, points);
+      if (target === null) return false;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      lockedUntil = performance.now() + (reduce ? 80 : STEP_LOCK_MS);
+      window.scrollTo({ top: target, behavior: reduce ? "auto" : "smooth" });
+      return true;
+    };
+    const onWheel = (event: WheelEvent) => {
+      if (event.ctrlKey || Math.abs(event.deltaY) < Math.abs(event.deltaX)) return; // pinch-zoom / horizontal swipes
+      if (step(event.deltaY)) event.preventDefault();
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      const direction = SCROLL_KEYS[event.key];
+      const target = event.target as HTMLElement | null;
+      if (!direction || event.altKey || event.ctrlKey || event.metaKey) return;
+      if (target?.closest("input, textarea, select, [contenteditable='true'], [role='dialog']")) return;
+      const sign = event.key === " " && event.shiftKey ? -1 : direction;
+      if (step(sign * window.innerHeight * 0.8)) event.preventDefault();
+    };
+    window.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [geometry]);
 
   const select = useCallback(
     (index: number) => {

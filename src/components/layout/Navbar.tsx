@@ -7,7 +7,7 @@ import { site } from "@/content/site";
 
 export function Navbar() {
   return (
-    <header className="relative z-10">
+    <header className="sticky top-0 z-40 bg-page/95 backdrop-blur-sm lg:relative lg:z-10 lg:bg-transparent lg:backdrop-blur-none">
       <Container className="relative flex items-center justify-between py-6">
         <LogoLockup />
         <nav aria-label="Primary" className="hidden lg:absolute lg:left-1/2 lg:block lg:-translate-x-1/2">

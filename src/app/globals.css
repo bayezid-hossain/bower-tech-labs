@@ -55,6 +55,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Keep anchor targets clear of the sticky mobile navbar. */
+@media (width < 64rem) {
+  html {
+    scroll-padding-top: 5.25rem;
+  }
+}
+
 body {
   overflow-x: clip;
 }
@@ -89,10 +96,11 @@ body {
 }
 
 /* Our Projects: cards pin and stack; each tab stays visible (tabs are staggered 80px). */
-@media (min-height: 760px) {
+/* Below lg the navbar is sticky (84px tall), so pinned cards sit just under it. */
+@media (min-height: 780px) {
   .project-stack-item {
     position: sticky;
-    top: 1rem;
+    top: 5.75rem;
   }
 }
 @media (width >= 64rem) and (min-height: 720px) {

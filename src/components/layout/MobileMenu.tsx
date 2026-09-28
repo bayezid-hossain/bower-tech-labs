@@ -109,13 +109,13 @@ export function MobileMenu() {
                     <XIcon size={20} weight="bold" aria-hidden="true" />
                   </button>
                 </div>
-                <motion.ul variants={list} initial={reduce ? false : "hidden"} animate="shown" className="mt-12 flex flex-col gap-2">
+                <motion.ul variants={list} initial={reduce ? false : "hidden"} animate="shown" className="mt-10 flex flex-col gap-1">
                   {navigation.map((link) => (
                     <motion.li key={link.href} variants={item}>
                       <a
                         href={link.href}
                         onClick={(event) => onNavigate(event, link.href)}
-                        className="block py-1.5 text-[32px] font-semibold leading-10 tracking-[-0.04em] text-ink transition-colors hover:text-navy"
+                        className="block py-2 text-[22px] font-medium leading-7 tracking-[-0.03em] text-ink transition-colors hover:text-navy"
                       >
                         {link.label}
                       </a>
