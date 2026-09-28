@@ -36,8 +36,8 @@ npm run assets        # re-extract brand assets from the design
 ```
 src/app/                 layout, page (composes sections), globals.css
 src/components/ui/       primitives: Button, IconButton, Badge, Container, SectionHeading, Card, Avatar, form/*
-src/components/motion/   Reveal, Marquee, DraggableMarquee
-src/components/patterns/ reusable composites: CurvedGallery, Carousel, PlayReel, ServiceCard, ProjectCard, StepCard, TestimonialCard, PricingCard, TeamMember, LogoLockup, WhatsAppButton
+src/components/motion/   MotionProvider, FadeIn, AnimatedText, RollingText, Marquee, DraggableMarquee
+src/components/patterns/ reusable composites: CurvedGallery, Carousel, PlayReel, ServiceCard, ProjectCard, ProjectStack, StepCard, TestimonialCard, PricingCard, TeamMember, LogoLockup, WhatsAppButton
 src/components/layout/   Navbar, Footer
 src/components/sections/ page sections (thin: read content, lay out patterns)
 src/content/             ALL copy + data (typed)
@@ -70,7 +70,7 @@ Never modify `assets/`. Copy files into `public/` with kebab-case names.
 
 ## Motion
 
-Reveal-on-scroll (fade + 16px rise), 2px hover lift, logo marquee, carousel slides, and the curved galleries (auto-scroll right-to-left; drag or arrow keys to move, snapping to a panel). User-requested additions beyond the static design. All of it is disabled under `prefers-reduced-motion`. The resting state must be identical to the design.
+Framer Motion (motion/react), trexalab.com-style: word-by-word text reveal (AnimatedText), spring fade-ups (FadeIn), letter-roll button hover (RollingText, CSS). Also the logo marquee, draggable auto-scrolling curved galleries, paged carousels (dots + disabled ends), and sticky stacking project cards with clickable tabs. All user-requested additions beyond the static design. Reduced motion shows final states immediately. The resting state must equal the design (exception: inactive project tabs are light blue).
 
 ## Verification Before "Done"
 

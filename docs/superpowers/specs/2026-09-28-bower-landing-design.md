@@ -177,6 +177,7 @@ Motion is additive only. The resting state must equal the design.
 - Carousels: smooth scroll-snap slide on arrow click. Arrows disable at the ends.
 - `prefers-reduced-motion`: all motion disabled.
 - Implemented with CSS and a small hook. No animation library unless one is needed.
+- See 2026-09-29-motion-carousels-stacking-design.md for Framer Motion text/fade animations, paged carousels and stacking projects.
 
 ## Contact Form Behavior
 

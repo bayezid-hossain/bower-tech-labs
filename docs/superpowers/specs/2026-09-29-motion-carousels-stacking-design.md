@@ -59,7 +59,7 @@ Library: `motion` (import from `motion/react`). Only client leaf components impo
 - The track is native horizontal scroll with snap at page starts. Swipe works on mobile.
 - Arrows move one page. Prev is disabled on the first page and Next on the last. The disabled style is `opacity-40` and `cursor-not-allowed`, and the button has the `disabled` attribute.
 - **Page dots:** one per page, navy when active, `bg-placeholder` otherwise. Each dot is a button (`aria-label="Go to page N"`, `aria-current` on the active one).
-  - Placement: pricing dots are centred between the cards and the arrows; testimonial dots sit under the cards (left on desktop, centred above the arrows on mobile).
+  - Placement: between the prev/next arrows (‹ • • ›) in every carousel, so section heights are unchanged.
 - The current page is derived from `scrollLeft`, and the arrow and dot state updates on scroll and resize.
 - **No edge-bleed:** the `lg:mr-[calc(50%-50vw)]` wrappers are removed.
 - Widths at 1440:
