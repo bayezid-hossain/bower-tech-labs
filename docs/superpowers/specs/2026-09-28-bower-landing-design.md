@@ -19,7 +19,7 @@ Components must be modular and reusable for future pages.
 | Empty image slots | AI-generated images (Krea) at each slot's exact aspect ratio |
 | Behavior | Functional + subtle motion (see Motion) |
 | Backend | None. Contact form validates client-side only |
-| Copy | Verbatim from design, typos included (see Copy Policy) |
+| Copy | From the design, typos corrected by the user (see Copy Policy) |
 | Verification | Playwright screenshot diff against design PNGs at 1440 and 375 |
 | Mobile content | Same content as desktop, with mobile layout. The mobile frame's content mistakes (2 identical services, "How We Works" above the projects, "exceptionally") are ignored. The mobile-only `#EEFAFF` Process band is kept |
 | Pricing card 4 | "Mobile App Design", "1-5 Pages", "Lunch Package- Design Only", "$1550", same features as card 1 |
@@ -187,6 +187,8 @@ Motion is additive only. The resting state must equal the design.
 ## Copy Policy
 
 Copy is verbatim, including the design's typos: "How We Works", "Lunch Package", "Trexa Lab crafts…", "Eg. Goggle", "expectionally", "Micro-Interations", "(Website+ Mobile App+ Dashboard", and the duplicate "Socials" footer heading. None get fixed unless the user asks.
+
+**Update 2026-09-28:** the user corrected these typos in commit 62e54f2. `src/content/` is now the source of truth for copy.
 
 ## Verification
 

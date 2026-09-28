@@ -8,7 +8,7 @@ Full spec: `docs/superpowers/specs/2026-09-28-bower-landing-design.md`.
 - Match `assets/Final Design.png` (desktop 1440) and `assets/Frame 2147241977.png` (mobile 375) exactly.
 - **No improvisation.** Do not add, remove, restyle, reorder, or "improve" anything: sections, spacing, colors, copy, icons.
 - Measure from `assets/Frame 2147241938.png` (2× desktop). Do not eyeball.
-- Copy is verbatim, **including typos** ("How We Works", "Lunch Package", "Trexa Lab", "Eg. Goggle", "expectionally", "Micro-Interations", duplicate "Socials"). Fix them only if the user asks.
+- Copy follows the design, **with the design's typos corrected by the user** (2026-09-28, commit 62e54f2: "How We Work", "Launch Package", "Exceptionally", "e.g., Google", footer "Services" column, etc.). `src/content/` is the source of truth — never revert it to the design's misspellings.
 - Only allowed additions: generated images in empty (light-blue) image slots, and subtle motion whose resting state equals the design.
 - If the design is ambiguous, ask the user. Don't guess.
 
