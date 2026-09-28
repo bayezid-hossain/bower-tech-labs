@@ -12,4 +12,5 @@ export const testimonials: Testimonial[] = [
   { name: "Keefe Dashiell", role: "Founder, After Life Initiative", quote, avatar: { src: "/images/testimonials/avatar-1.png", alt: "Keefe Dashiell" } },
   { name: "Keefe Dashiell", role: "Founder, After Life Initiative", quote, avatar: { src: "/images/testimonials/avatar-2.png", alt: "Keefe Dashiell" } },
   { name: "Keefe Dashiell", role: "Founder, After Life Initiative", quote, avatar: { src: "/images/testimonials/avatar-3.jpg", alt: "Keefe Dashiell" } },
+  { name: "Keefe Dashiell", role: "Founder, After Life Initiative", quote, avatar: { src: "/images/testimonials/avatar-1.png", alt: "Keefe Dashiell" } },
 ];

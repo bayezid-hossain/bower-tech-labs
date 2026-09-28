@@ -71,3 +71,19 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Paged carousels: items per page come from --per-page-base / --per-page-lg (set inline by CarouselTrack).
+   1.5rem matches the track's gap-6. */
+.carousel-track {
+  --per-page: var(--per-page-base, 1);
+}
+@media (width >= 64rem) {
+  .carousel-track {
+    --per-page: var(--per-page-lg, var(--per-page-base, 1));
+  }
+}
+.carousel-item {
+  flex: none;
+  width: calc((100% - (var(--per-page) - 1) * 1.5rem) / var(--per-page));
+  scroll-snap-align: start;
+}

@@ -37,5 +37,20 @@ export const pricingPlans: PricingPlan[] = [
     ],
   },
   { title: "Website Design", tag: "1-10 Pages", packageName: "Launch Package – Design Only", price: "$3550", features: designFeatures },
-  { title: "Mobile App Design", tag: "1-5 Pages", packageName: "Launch Package – Design Only", price: "$1550", features: designFeatures },
+  { title: "Mobile App", tag: "1-25 Pages", packageName: "Launch Package – Design Only", price: "$3050", features: designFeatures },
+  {
+    title: "Branding Design",
+    tag: "25+ Pages",
+    packageName: "Logo + Branding Guidelines",
+    price: "$2050",
+    features: [
+      "2/3 logo concepts with refinements",
+      "Social Media Kit (posts, stories, covers)",
+      "Stationery Kit (letterhead, business cards)",
+      "Comprehensive Brand Guidelines.",
+      "Figma Style Guide",
+      "Up to 5 revisions across full design.",
+      "All source files (AI, PSD, PNG, etc.)",
+    ],
+  },
 ];

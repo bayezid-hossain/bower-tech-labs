@@ -1,18 +1,22 @@
-/**
- * scrollLeft to move a looping carousel to after one step in `direction`.
- * A normal step is clamped to [0, maxScroll]; stepping forward at the end wraps to the start,
- * and stepping back at the start wraps to the end.
- */
-export function getStepTarget(
-  scrollLeft: number,
-  scrollWidth: number,
-  clientWidth: number,
-  step: number,
-  direction: 1 | -1,
-  tolerance = 2,
-): number {
-  const maxScroll = Math.max(0, scrollWidth - clientWidth);
-  if (direction === 1 && scrollLeft >= maxScroll - tolerance) return 0;
-  if (direction === -1 && scrollLeft <= tolerance) return maxScroll;
-  return Math.min(maxScroll, Math.max(0, scrollLeft + direction * step));
+/** Page math for paged carousels: `perPage` equal-width items per page, pages start every perPage items. */
+
+export function pageCount(itemCount: number, perPage: number): number {
+  if (perPage <= 0) return 1;
+  return Math.max(1, Math.ceil(itemCount / perPage));
+}
+
+/** Empty slots appended so a short last page can scroll to its own start. */
+export function spacerCount(itemCount: number, perPage: number): number {
+  if (perPage <= 1) return 0;
+  const remainder = itemCount % perPage;
+  return remainder === 0 ? 0 : perPage - remainder;
+}
+
+export function pageFromScroll(scrollLeft: number, pageWidth: number, pages: number): number {
+  if (pageWidth <= 0) return 0;
+  return Math.min(pages - 1, Math.max(0, Math.round(scrollLeft / pageWidth)));
+}
+
+export function pageScrollLeft(page: number, pageWidth: number): number {
+  return Math.max(0, page) * pageWidth;
 }
