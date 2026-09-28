@@ -5,7 +5,7 @@ import type { Service } from "@/types/content";
 
 export function ServiceCard({ service, className }: { service: Service; className?: string }) {
   return (
-    <Card as="article" className={cn("p-4 transition-transform duration-150 hover:-translate-y-0.5", className)}>
+    <Card as="article" className={cn("px-4 pt-4 transition-transform duration-150 hover:-translate-y-0.5", className)}>
       <div className="relative aspect-[558/364] overflow-hidden rounded-2xl bg-placeholder">
         <Image src={service.image.src} alt={service.image.alt} fill sizes="(min-width: 1024px) 558px, 100vw" className="object-cover" />
       </div>
