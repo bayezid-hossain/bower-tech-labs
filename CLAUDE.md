@@ -1,0 +1,76 @@
+# Bower Tech Labs — Landing Page
+
+Marketing landing page for Bower Tech Labs, built from a Figma export.
+Full spec: `docs/superpowers/specs/2026-09-28-bower-landing-design.md`.
+
+## Rule #1: The Design Is Law
+
+- Match `assets/Final Design.png` (desktop 1440) and `assets/Frame 2147241977.png` (mobile 375) exactly.
+- **No improvisation.** Do not add, remove, restyle, reorder, or "improve" anything: sections, spacing, colors, copy, icons.
+- Measure from `assets/Frame 2147241938.png` (2× desktop). Do not eyeball.
+- Copy is verbatim, **including typos** ("How We Works", "Lunch Package", "Trexa Lab", "Eg. Goggle", "expectionally", "Micro-Interations", duplicate "Socials"). Fix them only if the user asks.
+- Only allowed additions: generated images in empty (light-blue) image slots, and subtle motion whose resting state equals the design.
+- If the design is ambiguous, ask the user. Don't guess.
+
+## Stack
+
+- Next.js (App Router) + TypeScript + Tailwind CSS
+- Inter via `next/font/google`
+- Playwright for visual verification
+- No backend. The contact form is client-side only.
+
+## Commands
+
+```bash
+npm run dev           # local dev server
+npm run build         # production build (must pass)
+npm run lint          # lint (must pass)
+npm run test:visual   # screenshots at 1440 + 375, diffs vs design PNGs -> tests/visual/output/
+```
+
+## Structure
+
+```
+src/app/                 layout, page (composes sections), globals.css
+src/components/ui/       primitives: Button, IconButton, Badge, Container, SectionHeading, Card, Avatar, form/*
+src/components/motion/   Reveal, Marquee
+src/components/patterns/ reusable composites: CurvedGallery, Carousel, PlayReel, ServiceCard, ProjectCard, StepCard, TestimonialCard, PricingCard, TeamMember, LogoLockup, WhatsAppButton
+src/components/layout/   Navbar, Footer
+src/components/sections/ page sections (thin: read content, lay out patterns)
+src/content/             ALL copy + data (typed)
+src/hooks/  src/lib/  src/types/
+public/brand/ public/images/ public/logos/
+tests/visual/
+```
+
+### Component Rules
+
+- `ui/` = content-agnostic primitives with variants. `patterns/` = composites that take props. `sections/` = thin page composition.
+- No copy hardcoded in components. It lives in `src/content/`.
+- No ad-hoc hex values or magic numbers in JSX. Colors, radii, spacing, and type scale go in `tailwind.config.ts` tokens.
+- Use `cn()` (`src/lib/cn.ts`) for class merging.
+- Components must be reusable: typed props, sensible defaults, `className` passthrough.
+
+## Assets
+
+| File | Use |
+|---|---|
+| `assets/Final Design.png` | Desktop source of truth |
+| `assets/Frame 2147241938.png` | Desktop @2×, for measuring |
+| `assets/Frame 2147241977.png` | Mobile source of truth |
+| `assets/Frame 2147241907.png` | Footer full size |
+| `assets/Frame 2147241930.png` | Logo lockup |
+| `assets/Group 1413375668*.png` | Logo mark variants |
+| `assets/image 639.png` | Hero glass logo |
+
+Never modify `assets/`. Copy files into `public/` with kebab-case names.
+
+## Motion
+
+Reveal-on-scroll (fade + 16px rise), 2px hover lift, logo marquee, and carousel slides. All of it is disabled under `prefers-reduced-motion`. The resting state must be identical to the design.
+
+## Verification Before "Done"
+
+1. `npm run build` and `npm run lint` pass.
+2. `npm run test:visual`: compare each section against the design at 1440 and 375.
+3. Report remaining diffs honestly. Acceptable diffs: generated images, font anti-aliasing.
