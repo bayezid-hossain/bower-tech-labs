@@ -32,7 +32,7 @@ export type ButtonProps = LinkButtonProps | NativeButtonProps;
 
 export function buttonClasses(variant: ButtonVariant = "primary", size: ButtonSize = "md", className?: string) {
   return cn(
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium tracking-[-0.02em]",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium tracking-[-0.04em]",
     "transition-[transform,box-shadow] duration-150 hover:-translate-y-0.5",
     "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy",
     variants[variant],

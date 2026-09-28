@@ -13,7 +13,7 @@ export function Navbar() {
           <ul className="flex items-center gap-5">
             {navigation.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="text-[15px] tracking-[-0.02em] text-body transition-colors hover:text-ink">
+                <a href={link.href} className="text-[15px] tracking-[-0.04em] text-body transition-colors hover:text-ink">
                   {link.label}
                 </a>
               </li>

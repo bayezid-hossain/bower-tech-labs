@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const inter = Inter({ subsets: ["latin"], axes: ["opsz"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Bower Tech Labs — Product Design That Ships in Days, Not Months.",
