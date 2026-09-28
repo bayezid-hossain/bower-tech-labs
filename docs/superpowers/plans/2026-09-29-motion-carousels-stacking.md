@@ -13,6 +13,21 @@
 
 **Spec:** `docs/superpowers/specs/2026-09-29-motion-carousels-stacking-design.md`. **Rules:** `CLAUDE.md`. The resting state must equal the design, and reduced motion means final state immediately.
 
+**Motion rules (design-taste-frontend skill, applied within this plan):**
+- Motion only in `"use client"` leaves.
+- Animate only transform and opacity.
+- Springs, not linear easing.
+- Mandatory reduced-motion fallback.
+- `staggerChildren` parent and children in the same client tree.
+- No `addEventListener("scroll")`: use Motion `useScroll` + `useMotionValueEvent`, and set React state only on discrete changes.
+- Strict effect cleanup.
+- Tactile press feedback (`active:scale-[0.98]`) on buttons, arrow buttons, dots and tabs.
+
+Deliberately NOT applied, per the user ("stick to original plans"):
+- The em-dash copy ban (copy is fixed by the design and the user's edits).
+- The one-marquee limit (the galleries are user-requested).
+- Shrink/dim on stacked cards.
+
 **Plan-time decision (spec update in Task 10):** page dots render **between the prev/next arrows** (`‹ • • ›`) in every carousel, not under the cards. This keeps section heights, and therefore the desktop design match, unchanged.
 
 ---
@@ -499,7 +514,7 @@ export function RollingText({ text, className }: RollingTextProps) {
 Add `import { RollingText } from "@/components/motion/RollingText";`. In `buttonClasses`, change the first base string to start with `group `:
 
 ```ts
-    "group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium tracking-[-0.04em]",
+    "group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium tracking-[-0.04em] active:scale-[0.98]",
 ```
 
 Then change `content`:
@@ -659,6 +674,7 @@ Expected: all pass. Typecheck will now fail in `useCarousel.ts`; that's expected
 ```ts
 "use client";
 
+import { useMotionValueEvent, useScroll } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { pageCount, pageFromScroll, pageScrollLeft } from "@/lib/carousel";
 
@@ -687,16 +703,18 @@ export function usePagedCarousel(itemCount: number) {
     setState((s) => (s.page === page && s.pages === m.pages ? s : { page, pages: m.pages }));
   }, [metrics]);
 
+  // Scroll tracking via Motion (no raw scroll listeners); state only changes when the page does.
+  const { scrollX } = useScroll({ container: trackRef });
+  useMotionValueEvent(scrollX, "change", update);
+
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
     const frame = requestAnimationFrame(update);
-    el.addEventListener("scroll", update, { passive: true });
     const observer = new ResizeObserver(update);
     observer.observe(el);
     return () => {
       cancelAnimationFrame(frame);
-      el.removeEventListener("scroll", update);
       observer.disconnect();
     };
   }, [update]);
@@ -802,7 +820,7 @@ export function CarouselControls({ onPrev, onNext, onGoTo, canPrev, canNext, pag
               aria-label={`Go to page ${i + 1}`}
               aria-current={i === page ? "true" : undefined}
               onClick={() => onGoTo(i)}
-              className="group/dot p-1.5 focus-visible:outline-2 focus-visible:outline-navy"
+              className="group/dot p-1.5 transition-transform active:scale-[0.9] focus-visible:outline-2 focus-visible:outline-navy"
             >
               <span
                 className={cn(
@@ -830,7 +848,7 @@ Replace the doc comment and the second class string:
 /** 40px outlined circle. Disabled: dimmed and not clickable (carousel ends). */
 ```
 ```tsx
-        "transition-[transform,opacity] duration-150 enabled:hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40",
+        "transition-[transform,opacity] duration-150 enabled:hover:-translate-y-0.5 enabled:active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40",
 ```
 
 - [ ] **Step 6: Typecheck**
@@ -1161,7 +1179,7 @@ Replace the tab row (the `<div className="flex justify-end" …>` block and its 
           aria-label={`Show project ${project.number}`}
           aria-current={active ? "true" : undefined}
           className={cn(
-            "pointer-events-auto flex size-14 items-center justify-center rounded-tr-[4px] text-2xl transition-colors duration-200 [clip-path:polygon(8px_0,100%_0,100%_100%,0_100%,0_8px)]",
+            "pointer-events-auto flex size-14 items-center justify-center rounded-tr-[4px] text-2xl transition-[color,background-color,transform] duration-200 active:scale-[0.98] [clip-path:polygon(8px_0,100%_0,100%_100%,0_100%,0_8px)]",
             "focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white",
             active ? "bg-navy-gradient text-white" : "bg-placeholder text-navy hover:bg-navy hover:text-white",
           )}
@@ -1176,6 +1194,7 @@ Replace the tab row (the `<div className="flex justify-end" …>` block and its 
 ```tsx
 "use client";
 
+import { useMotionValueEvent, useScroll } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { activeStackIndex, stackOffsets, stackScrollTarget } from "@/lib/project-stack";
@@ -1206,25 +1225,25 @@ export function ProjectStack({ projects, className }: ProjectStackProps) {
     };
   }, []);
 
+  const update = useCallback(() => {
+    const g = geometry();
+    if (!g) return;
+    const next = activeStackIndex(window.scrollY, g.listTop, g.offsets, g.stickyTop);
+    setActive((current) => (current === next ? current : next));
+  }, [geometry]);
+
+  // Page scroll via Motion's useScroll (no raw scroll listeners); state changes only when the top card does.
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", update);
+
   useEffect(() => {
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const g = geometry();
-      if (g) setActive(activeStackIndex(window.scrollY, g.listTop, g.offsets, g.stickyTop));
-    };
-    const schedule = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    schedule();
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
+    const frame = requestAnimationFrame(update);
+    window.addEventListener("resize", update);
     return () => {
       cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
+      window.removeEventListener("resize", update);
     };
-  }, [geometry]);
+  }, [update]);
 
   const select = useCallback(
     (index: number) => {
