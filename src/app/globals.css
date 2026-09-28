@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-page: #f6fcff;
+  --color-page-alt: #eefaff;
+  --color-surface: #ffffff;
+  --color-navy: #003853;
+  --color-navy-ink: #003148;
+  --color-ink: #001b25;
+  --color-body: #425761;
+  --color-muted: #6b7fa3;
+  --color-accent: #1e66d6;
+  --color-placeholder: #c0dceb;
+  --color-gutter: #f4f7fb;
+  --color-line: #e6eaea;
+  --color-hint: #7b8a91;
+  --color-label: #0f1c3f;
+  --color-link: #39537a;
+  --color-whatsapp-text: #0c2756;
+  --color-role: #003d5b;
+  --color-name: #03292c;
+  --color-caption: #567072;
+  --color-avatar-empty: #d9d9d9;
+  --color-success: #4caf50;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --shadow-button: inset 0 1px 3px rgb(255 255 255 / 0.08), 0 4px 10px rgb(0 56 83 / 0.28);
+  --shadow-soft: 0 4px 16px rgb(0 56 83 / 0.06);
+
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 }
 
+@utility bg-navy-gradient {
+  background-image: linear-gradient(180deg, #0c4468 0%, #033b58 30%, #003853 60%, #053d5c 100%);
+}
+
+@utility bg-deep-gradient {
+  background-image: linear-gradient(180deg, #102b41 0%, #0b2232 30%, #081e2b 60%, #0a2131 100%);
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
