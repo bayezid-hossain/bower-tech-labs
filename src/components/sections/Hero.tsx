@@ -40,7 +40,7 @@ export function Hero() {
           </div>
         </Reveal>
       </Container>
-      <CurvedGallery images={hero.gallery} priority className="mt-[54px] lg:mt-[67px]" />
+      <CurvedGallery images={hero.gallery} label={hero.galleryLabel} priority className="mt-[54px] lg:mt-[67px]" />
     </section>
   );
 }

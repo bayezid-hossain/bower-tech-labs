@@ -1,25 +1,27 @@
 import Image from "next/image";
-import { Marquee } from "@/components/motion/Marquee";
+import { DraggableMarquee } from "@/components/motion/DraggableMarquee";
 import { cn } from "@/lib/cn";
 import type { ImageAsset } from "@/types/content";
 
 type CurvedGalleryProps = {
   images: ImageAsset[];
+  /** Accessible name for the gallery carousel. */
+  label: string;
   priority?: boolean;
   className?: string;
 };
 
 export function CurvedGallery({
   images,
+  label,
   priority,
   className,
 }: CurvedGalleryProps) {
   return (
     <div className={cn("relative h-[276px] w-full lg:h-[612px]", className)}>
       <div className="absolute inset-0 overflow-hidden bg-gutter">
-        <Marquee
-          fade={false}
-          duration={60}
+        <DraggableMarquee
+          label={label}
           className="absolute inset-0"
           innerClassName="h-full -ml-[123px] lg:-ml-[393px]"
           trackClassName="h-full items-stretch gap-[7px] pr-[7px] lg:gap-4 lg:pr-4"
@@ -35,11 +37,12 @@ export function CurvedGallery({
                 fill
                 sizes="(min-width: 1024px) 536px, 300px"
                 preload={priority && i < 2}
+                draggable={false}
                 className="object-cover"
               />
             </div>
           ))}
-        </Marquee>
+        </DraggableMarquee>
       </div>
       {/* Curve overlays sit outside the clipped box and overhang it by 1px, so fractional
           device-pixel ratios can't leave a sliver of gutter showing along the edges. */}

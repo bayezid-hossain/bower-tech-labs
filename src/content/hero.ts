@@ -6,6 +6,7 @@ export const hero = {
   description:
     "SaaS dashboards, marketing sites, and digital products — designed, built,\nand ready to test while agencies are still scheduling their third discovery call.",
   primaryCta: { label: "Request a Quote", href: "#contact" },
+  galleryLabel: "Featured work gallery",
   gallery: [
     { src: "/images/hero/gallery-1.jpg", alt: "SaaS analytics dashboard design" },
     { src: "/images/hero/gallery-2.jpg", alt: "Mobile banking app screens" },

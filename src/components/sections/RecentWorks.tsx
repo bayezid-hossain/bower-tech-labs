@@ -17,7 +17,7 @@ export function RecentWorks() {
           />
         </Reveal>
       </Container>
-      <CurvedGallery images={recentWorksSection.gallery} className="mt-12 lg:mt-0" />
+      <CurvedGallery images={recentWorksSection.gallery} label={recentWorksSection.galleryLabel} className="mt-12 lg:mt-0" />
     </section>
   );
 }
