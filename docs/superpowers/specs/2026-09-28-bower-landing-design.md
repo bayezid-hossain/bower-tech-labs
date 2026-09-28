@@ -21,6 +21,9 @@ Components must be modular and reusable for future pages.
 | Backend | None. Contact form validates client-side only |
 | Copy | Verbatim from design, typos included (see Copy Policy) |
 | Verification | Playwright screenshot diff against design PNGs at 1440 and 375 |
+| Mobile content | Same content as desktop, with mobile layout. The mobile frame's content mistakes (2 identical services, "How We Works" above the projects, "exceptionally") are ignored. The mobile-only `#EEFAFF` Process band is kept |
+| Pricing card 4 | "Mobile App Design", "1-5 Pages", "Lunch Package- Design Only", "$1550", same features as card 1 |
+| Pixel-exact image assets | Logo lockups, hero glass, the whole Play Reel dial, footer wordmark, client logos, WhatsApp icon, and avatars are cropped from the transparent 2× export |
 
 ## Source Assets
 
