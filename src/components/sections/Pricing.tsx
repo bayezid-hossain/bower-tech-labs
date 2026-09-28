@@ -10,7 +10,7 @@ import { pricingPlans, pricingSection } from "@/content/pricing";
 import { useCarousel } from "@/hooks/useCarousel";
 
 export function Pricing() {
-  const { trackRef, prev, next, canPrev, canNext } = useCarousel();
+  const { trackRef, prev, next } = useCarousel();
   const { before, emphasis, after } = pricingSection.subtitle;
 
   return (
@@ -40,7 +40,7 @@ export function Pricing() {
             ))}
           </CarouselTrack>
         </div>
-        <CarouselControls onPrev={prev} onNext={next} canPrev={canPrev} canNext={canNext} className="mt-6 justify-center" />
+        <CarouselControls onPrev={prev} onNext={next} className="mt-6 justify-center" />
       </Container>
     </section>
   );

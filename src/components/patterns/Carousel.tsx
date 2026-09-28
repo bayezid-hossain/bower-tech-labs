@@ -29,18 +29,16 @@ export function CarouselTrack({ trackRef, label, className, children }: Carousel
 type CarouselControlsProps = {
   onPrev: () => void;
   onNext: () => void;
-  canPrev: boolean;
-  canNext: boolean;
   className?: string;
 };
 
-export function CarouselControls({ onPrev, onNext, canPrev, canNext, className }: CarouselControlsProps) {
+export function CarouselControls({ onPrev, onNext, className }: CarouselControlsProps) {
   return (
     <div className={cn("flex items-center gap-4", className)}>
-      <IconButton label="Previous" onClick={onPrev} disabled={!canPrev}>
+      <IconButton label="Previous" onClick={onPrev}>
         <ArrowIcon direction="left" />
       </IconButton>
-      <IconButton label="Next" onClick={onNext} disabled={!canNext}>
+      <IconButton label="Next" onClick={onNext}>
         <ArrowIcon />
       </IconButton>
     </div>

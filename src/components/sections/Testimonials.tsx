@@ -9,8 +9,8 @@ import { testimonials, testimonialsSection } from "@/content/testimonials";
 import { useCarousel } from "@/hooks/useCarousel";
 
 export function Testimonials() {
-  const { trackRef, prev, next, canPrev, canNext } = useCarousel();
-  const controls = { onPrev: prev, onNext: next, canPrev, canNext };
+  const { trackRef, prev, next } = useCarousel();
+  const controls = { onPrev: prev, onNext: next };
 
   return (
     <section id="testimonials" aria-labelledby="testimonials-title" className="pt-20 lg:pt-[113px]">
