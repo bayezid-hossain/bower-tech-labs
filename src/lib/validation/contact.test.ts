@@ -37,4 +37,8 @@ describe("validateContact", () => {
     expect(errors.company).toBeUndefined();
     expect(errors.whatsapp).toBeUndefined();
   });
+
+  it("accepts an email with surrounding whitespace", () => {
+    expect(validateContact({ ...valid, email: "  jane@example.com  " }).email).toBeUndefined();
+  });
 });
