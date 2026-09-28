@@ -36,7 +36,7 @@ npm run assets        # re-extract brand assets from the design
 ```
 src/app/                 layout, page (composes sections), globals.css
 src/components/ui/       primitives: Button, IconButton, Badge, Container, SectionHeading, Card, Avatar, form/*
-src/components/motion/   Reveal, Marquee
+src/components/motion/   Reveal, Marquee, DraggableMarquee
 src/components/patterns/ reusable composites: CurvedGallery, Carousel, PlayReel, ServiceCard, ProjectCard, StepCard, TestimonialCard, PricingCard, TeamMember, LogoLockup, WhatsAppButton
 src/components/layout/   Navbar, Footer
 src/components/sections/ page sections (thin: read content, lay out patterns)
@@ -70,7 +70,7 @@ Never modify `assets/`. Copy files into `public/` with kebab-case names.
 
 ## Motion
 
-Reveal-on-scroll (fade + 16px rise), 2px hover lift, logo marquee, and carousel slides. All of it is disabled under `prefers-reduced-motion`. The resting state must be identical to the design.
+Reveal-on-scroll (fade + 16px rise), 2px hover lift, logo marquee, carousel slides, and the curved galleries (auto-scroll right-to-left; drag or arrow keys to move, snapping to a panel). User-requested additions beyond the static design. All of it is disabled under `prefers-reduced-motion`. The resting state must be identical to the design.
 
 ## Verification Before "Done"
 

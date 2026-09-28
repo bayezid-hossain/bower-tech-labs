@@ -173,6 +173,7 @@ Motion is additive only. The resting state must equal the design.
 - `Reveal`: opacity 0→1, translateY 16px→0, 500ms ease-out, once per element, triggered by IntersectionObserver.
 - Buttons and cards: hover lift of 2px plus a slightly stronger shadow, 150ms.
 - Marquee: continuous linear scroll, paused on hover.
+- Curved galleries (user request, 2026-09-28): auto-scroll right-to-left (~40px/s), draggable left/right with snap to the nearest panel on release, arrow-key stepping, paused on hover/keyboard focus. Resting frame (offset 0) equals the design.
 - Carousels: smooth scroll-snap slide on arrow click. Arrows disable at the ends.
 - `prefers-reduced-motion`: all motion disabled.
 - Implemented with CSS and a small hook. No animation library unless one is needed.
