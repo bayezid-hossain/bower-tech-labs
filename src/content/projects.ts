@@ -9,6 +9,12 @@ export const projectsSection = {
   title: "Our Projects",
   subtitle:
     "Built by two award-winning creative developers, our vault gives you access to the techniques,\ncomponents, code, and tools behind our projects. Build, tweak, and make them your own.",
+  /** Floating shortcut shown while the card stack is active, to jump past it. */
+  skip: {
+    navLabel: "Skip the project cards",
+    prev: { label: "Previous section", href: "#services" },
+    next: { label: "Next section", href: "#process" },
+  },
 };
 
 export const projects: Project[] = [

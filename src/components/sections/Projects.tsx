@@ -14,7 +14,7 @@ export function Projects() {
           subtitle={projectsSection.subtitle}
           subtitleClassName="mt-[10px] lg:mt-[22px]"
         />
-        <ProjectStack projects={projects} className="mt-[39px] lg:mt-[47px]" />
+        <ProjectStack projects={projects} skip={projectsSection.skip} className="mt-[39px] lg:mt-[47px]" />
       </Container>
     </section>
   );

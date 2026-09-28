@@ -112,7 +112,5 @@ body {
     min-height: calc(100dvh - 2.5rem);
   }
 }
-/* The last card needs no reserved space: the next section may follow it. */
-.project-stack-item:last-child {
-  min-height: 0;
-}
+/* Note: the last card reserves the full screen too. Sticky items can't stay pinned past the end of their list,
+   so a shorter last item would drag the stacked cards up during the final step. */
