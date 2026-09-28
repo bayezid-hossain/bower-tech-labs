@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import { RollingText } from "@/components/motion/RollingText";
 import { cn } from "@/lib/cn";
 
 const variants = {
@@ -32,7 +33,7 @@ export type ButtonProps = LinkButtonProps | NativeButtonProps;
 
 export function buttonClasses(variant: ButtonVariant = "primary", size: ButtonSize = "md", className?: string) {
   return cn(
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium tracking-[-0.04em]",
+    "group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium tracking-[-0.04em] active:scale-[0.98]",
     "transition-[transform,box-shadow] duration-150 hover:-translate-y-0.5",
     "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy",
     variants[variant],
@@ -47,7 +48,7 @@ export function Button(props: ButtonProps) {
   const content = (
     <>
       {icon}
-      {children}
+      {typeof children === "string" ? <RollingText text={children} /> : children}
     </>
   );
 
