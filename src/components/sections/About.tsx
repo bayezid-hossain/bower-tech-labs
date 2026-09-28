@@ -15,7 +15,7 @@ export function About() {
           </p>
         </Reveal>
         <Reveal className="mt-[31px] lg:mt-[56px]">
-          <PlayReel alt={about.reelAlt} className="ml-0.5 max-w-[325px] lg:ml-[288px] lg:max-w-[612px]" />
+          <PlayReel alt={about.reelAlt} className="max-w-[325px] lg:max-w-[612px]" />
         </Reveal>
       </Container>
     </section>
