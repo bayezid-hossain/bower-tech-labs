@@ -1,0 +1,79 @@
+<!doctype html>
+<html style="--w:1072px;--h:1224px">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  body { background: linear-gradient(165deg, #eef6fb 0%, #dcebf4 60%, #cfe4f0 100%); }
+  .paper { position: absolute; background: #fff; box-shadow: 0 30px 60px -24px rgba(0,56,83,0.35), 0 4px 10px -4px rgba(0,56,83,0.12); }
+  .letter { left: 110px; top: 120px; width: 520px; height: 720px; transform: rotate(-7deg); padding: 56px 52px; font-size: 12px; color: var(--body); border-radius: 4px; }
+  .letter .hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 64px; }
+  .word { font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--navy); display: flex; align-items: center; gap: 10px; }
+  .line { height: 7px; border-radius: 4px; background: #e8eff4; margin: 11px 0; }
+  .tile { position: absolute; right: 96px; top: 96px; width: 380px; height: 380px; border-radius: 36px; background: linear-gradient(145deg, #0a4b6b 0%, #003853 55%, #00283c 100%); display: grid; place-items: center; transform: rotate(5deg); box-shadow: var(--shadow-lg); overflow: hidden; }
+  .tile::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 38px 38px; }
+  .card { position: absolute; width: 400px; height: 232px; border-radius: 14px; border: 0; padding: 28px 30px; }
+  .c-navy { left: 300px; top: 610px; background: linear-gradient(135deg, #1e66d6 0%, #1450b4 100%); color: #fff; transform: rotate(-14deg); box-shadow: var(--shadow-lg); z-index: 3; }
+  .c-white { left: 570px; top: 520px; background: #fff; transform: rotate(9deg); box-shadow: var(--shadow-md); z-index: 2; }
+  .sw { position: absolute; bottom: 150px; left: 50%; transform: translateX(-50%); display: flex; gap: 16px; z-index: 4; }
+  .sw div { width: 132px; height: 170px; border-radius: 18px; background: #fff; box-shadow: var(--shadow-md); overflow: hidden; font-size: 12px; }
+  .sw div span { display: block; height: 108px; }
+  .sw div p { padding: 10px 12px; line-height: 1.35; color: var(--body); }
+  .sw div p b { color: var(--ink); display: block; font-size: 13px; }
+  .pen { position: absolute; left: 700px; top: 300px; width: 16px; height: 420px; border-radius: 10px; background: linear-gradient(90deg, #0b2230, #1d3d4f 50%, #0b2230); transform: rotate(32deg); box-shadow: 18px 22px 30px -10px rgba(0,56,83,0.35); z-index: 1; }
+  .pen::after { content: ""; position: absolute; bottom: -24px; left: 3px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 26px solid #c9a86a; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="wing" viewBox="0 0 100 100">
+      <path d="M10 86 C16 50 50 16 94 8 C82 30 60 56 10 86Z"/>
+      <path d="M10 86 C30 62 58 46 92 40 C78 58 54 74 10 86Z" opacity=".75"/>
+      <path d="M10 86 C36 74 60 68 88 68 C74 80 50 88 10 86Z" opacity=".5"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="paper letter">
+  <div class="hd">
+    <div class="word"><svg width="34" height="34" fill="#1e66d6"><use href="#wing"/></svg>Aviary</div>
+    <div style="text-align:right;font-size:10.5px;line-height:1.6">aviary.studio<br/>hello@aviary.studio</div>
+  </div>
+  <div style="font-size:11px;color:var(--muted)">28 September 2026</div>
+  <div style="font-weight:700;color:var(--ink);font-size:15px;margin:22px 0 14px">Dear Harper,</div>
+  <div class="line" style="width:96%"></div><div class="line" style="width:90%"></div><div class="line" style="width:94%"></div><div class="line" style="width:62%"></div>
+  <div style="height:18px"></div>
+  <div class="line" style="width:92%"></div><div class="line" style="width:97%"></div><div class="line" style="width:80%"></div>
+  <div style="height:18px"></div>
+  <div class="line" style="width:88%"></div><div class="line" style="width:45%"></div>
+  <div style="position:absolute;bottom:52px;left:52px;right:52px;display:flex;justify-content:space-between;font-size:10px;color:var(--muted);border-top:1px solid #e8eff4;padding-top:14px"><span>Aviary Studio · Lisbon</span><span>+351 21 000 4820</span></div>
+</div>
+
+
+<div class="tile">
+  <svg width="210" height="210" fill="#fff" style="position:relative"><use href="#wing"/></svg>
+</div>
+
+<div class="card c-white">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;height:100%;flex-direction:column">
+    <div class="word" style="font-size:20px"><svg width="30" height="30" fill="#1e66d6"><use href="#wing"/></svg>Aviary</div>
+    <div style="font-size:12px;color:var(--body);line-height:1.6;align-self:flex-end;text-align:right"><b style="color:var(--ink);font-size:15px">Harper Quinn</b><br/>Creative Director<br/>harper@aviary.studio</div>
+  </div>
+</div>
+
+<div class="card c-navy">
+  <div style="height:100%;display:flex;flex-direction:column;justify-content:space-between">
+    <svg width="54" height="54" fill="#fff"><use href="#wing"/></svg>
+    <div class="row between" style="align-items:flex-end"><span style="font-weight:800;font-size:28px;letter-spacing:-0.02em">Aviary</span><span style="font-size:11px;opacity:.8">Design that takes flight</span></div>
+  </div>
+</div>
+
+<div class="sw">
+  <div><span style="background:#1e66d6"></span><p><b>Flight Blue</b>#1E66D6</p></div>
+  <div><span style="background:#003853"></span><p><b>Deep Navy</b>#003853</p></div>
+  <div><span style="background:#c0dceb"></span><p><b>Sky</b>#C0DCEB</p></div>
+  <div><span style="background:#f6fcff;border-bottom:1px solid #e3edf3"></span><p><b>Cloud</b>#F6FCFF</p></div>
+</div>
+</body>
+</html>

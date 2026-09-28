@@ -1,0 +1,109 @@
+<!doctype html>
+<html style="--w:1072px;--h:1224px">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .glow { position: absolute; left: 50%; top: 50%; width: 760px; height: 760px; transform: translate(-50%,-50%); border-radius: 50%; background: radial-gradient(circle, rgba(30,102,214,0.55), rgba(30,102,214,0) 65%); }
+  .ring { position: absolute; left: 50%; top: 50%; border-radius: 50%; border: 1px solid rgba(255,255,255,0.08); transform: translate(-50%,-50%); }
+  .p-center { left: 50%; top: 50%; transform: translate(-50%,-50%) scale(1.22); z-index: 3; }
+  .p-left { left: 50%; top: 50%; transform: translate(-50%,-50%) translateX(-300px) translateY(40px) rotate(-8deg) scale(1.02); z-index: 1; }
+  .p-right { left: 50%; top: 50%; transform: translate(-50%,-50%) translateX(300px) translateY(-40px) rotate(8deg) scale(1.02); z-index: 1; }
+  .p-left, .p-right { box-shadow: 0 50px 90px -30px rgba(0,0,0,0.6); }
+  .screen { font-size: 12px; color: var(--ink); }
+  .pad { padding: 0 18px; }
+  .hello { display: flex; align-items: center; gap: 10px; margin: 6px 0 16px; }
+  .balance { border-radius: 22px; padding: 18px; color: #fff; background: linear-gradient(135deg, #1e66d6 0%, #0d4aa8 45%, #003853 100%); position: relative; overflow: hidden; }
+  .balance::after { content: ""; position: absolute; right: -40px; top: -50px; width: 160px; height: 160px; border-radius: 50%; border: 22px solid rgba(255,255,255,0.08); }
+  .balance .amt { font-size: 30px; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0 14px; }
+  .actions { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin: 18px 0; text-align: center; font-size: 10.5px; font-weight: 500; color: var(--body); }
+  .actions .ic { width: 46px; height: 46px; border-radius: 15px; margin: 0 auto 6px; background: #eef5fb; display: grid; place-items: center; }
+  .actions svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .tx { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid #f0f4f7; }
+  .tx .ico { width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center; font-weight: 700; font-size: 13px; color: #fff; flex: none; }
+  .tx .n { font-weight: 600; font-size: 12.5px; }
+  .tabbar { position: absolute; bottom: 0; left: 0; right: 0; height: 70px; background: #fff; border-top: 1px solid #eef3f6; display: flex; justify-content: space-around; padding-top: 12px; }
+  .tabbar i { width: 22px; height: 22px; border-radius: 7px; border: 2px solid #b9c9d2; display: block; }
+  .tabbar i.on { border-color: var(--accent); background: #e4eefc; }
+  h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+  .key { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px 0; text-align: center; font-size: 22px; font-weight: 500; color: var(--ink); }
+  .key div { padding: 8px 0; }
+</style>
+</head>
+<body>
+<div class="stage bg-navy grid-dots"></div>
+<div class="glow"></div>
+<div class="ring" style="width:900px;height:900px"></div>
+<div class="ring" style="width:640px;height:640px"></div>
+
+<!-- Left: spending insights -->
+<div class="phone p-left"><div class="screen"><span class="island"></span>
+  <div class="status"><span>9:41</span><span class="sig"><b></b><i></i></span></div>
+  <div class="pad">
+    <h3 style="margin:8px 0 2px">Spending</h3><div class="muted">September 2026</div>
+    <div style="position:relative;width:190px;height:190px;margin:18px auto 10px">
+      <svg viewBox="0 0 42 42" width="190" height="190">
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#eef3f6" stroke-width="5"/>
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#1e66d6" stroke-width="5" stroke-dasharray="38 62" stroke-dashoffset="25"/>
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#003853" stroke-width="5" stroke-dasharray="24 76" stroke-dashoffset="-13"/>
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#7fb0ee" stroke-width="5" stroke-dasharray="18 82" stroke-dashoffset="-37"/>
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#c0dceb" stroke-width="5" stroke-dasharray="14 86" stroke-dashoffset="-55"/>
+      </svg>
+      <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center"><div><div class="muted" style="font-size:11px">Total spent</div><div style="font-size:22px;font-weight:800">$2,846</div></div></div>
+    </div>
+    <div class="tx"><span class="ico" style="background:#1e66d6">H</span><div class="grow"><div class="n">Housing</div><div class="muted">38%</div></div><b>$1,080</b></div>
+    <div class="tx"><span class="ico" style="background:#003853">F</span><div class="grow"><div class="n">Food &amp; dining</div><div class="muted">24%</div></div><b>$684</b></div>
+    <div class="tx"><span class="ico" style="background:#7fb0ee">T</span><div class="grow"><div class="n">Transport</div><div class="muted">18%</div></div><b>$512</b></div>
+    <div class="tx" style="border:0"><span class="ico" style="background:#c0dceb;color:#003853">S</span><div class="grow"><div class="n">Subscriptions</div><div class="muted">14%</div></div><b>$398</b></div>
+  </div>
+  <div class="tabbar"><i></i><i class="on"></i><i></i><i></i></div><span class="homebar"></span>
+</div></div>
+
+<!-- Right: send money -->
+<div class="phone p-right"><div class="screen"><span class="island"></span>
+  <div class="status"><span>9:41</span><span class="sig"><b></b><i></i></span></div>
+  <div class="pad">
+    <h3 style="margin:8px 0 14px">Send money</h3>
+    <div class="row gap-12" style="margin-bottom:18px">
+      <div style="text-align:center"><span class="av a1" style="width:48px;height:48px;box-shadow:0 0 0 2px #1e66d6"></span><div style="font-size:10.5px;margin-top:4px;font-weight:600">Ava</div></div>
+      <div style="text-align:center"><span class="av a2" style="width:48px;height:48px"></span><div style="font-size:10.5px;margin-top:4px">Leo</div></div>
+      <div style="text-align:center"><span class="av a3" style="width:48px;height:48px"></span><div style="font-size:10.5px;margin-top:4px">Nora</div></div>
+      <div style="text-align:center"><span class="av a4" style="width:48px;height:48px"></span><div style="font-size:10.5px;margin-top:4px">Sam</div></div>
+    </div>
+    <div style="text-align:center;background:#f4f8fb;border-radius:18px;padding:16px 0">
+      <div class="muted">To Ava Chen</div>
+      <div style="font-size:40px;font-weight:800;letter-spacing:-0.03em;margin-top:2px">$240<span style="color:#b9c9d2">.00</span></div>
+      <span class="pill blue" style="margin-top:6px">Dinner split</span>
+    </div>
+    <div class="key" style="margin-top:14px"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div></div>
+    <div class="btn primary" style="width:100%;height:46px;border-radius:14px;margin-top:8px">Send $240</div>
+  </div>
+  <span class="homebar"></span>
+</div></div>
+
+<!-- Center: home -->
+<div class="phone p-center"><div class="screen"><span class="island"></span>
+  <div class="status"><span>9:41</span><span class="sig"><b></b><i></i></span></div>
+  <div class="pad">
+    <div class="hello"><span class="av a5" style="width:38px;height:38px"></span><div class="grow"><div class="muted" style="font-size:11px">Welcome back</div><b style="font-size:14px">Daniel Reyes</b></div>
+      <span style="width:36px;height:36px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#003853" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span></div>
+    <div class="balance">
+      <div class="row between"><span style="opacity:.8;font-size:11.5px">Total balance</span><b style="font-size:13px;letter-spacing:.04em">TIDAL</b></div>
+      <div class="amt">$24,580.40</div>
+      <div class="row between" style="font-size:11px;opacity:.85"><span>•••• 4829</span><span class="pill" style="background:rgba(255,255,255,.18);color:#fff;font-size:10.5px;padding:3px 9px">+ $1,240 this week</span></div>
+    </div>
+    <div class="actions">
+      <div><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>Send</div>
+      <div><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>Request</div>
+      <div><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>Top up</div>
+      <div><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M3 10h18"/></svg></div>Cards</div>
+    </div>
+    <div class="row between" style="margin-bottom:2px"><b style="font-size:14px">Recent activity</b><span style="color:var(--accent);font-weight:600;font-size:11px">See all</span></div>
+    <div class="tx"><span class="ico" style="background:#1e66d6">S</span><div class="grow"><div class="n">Spotify Premium</div><div class="muted">Today, 08:12</div></div><b>-$11.99</b></div>
+    <div class="tx"><span class="ico" style="background:#16a37a">P</span><div class="grow"><div class="n">Payroll · Kinetic Co.</div><div class="muted">Yesterday</div></div><b class="up">+$4,200</b></div>
+    <div class="tx" style="border:0"><span class="ico" style="background:#003853">B</span><div class="grow"><div class="n">Blue Bottle Coffee</div><div class="muted">Sep 26</div></div><b>-$6.40</b></div>
+  </div>
+  <div class="tabbar"><i class="on"></i><i></i><i></i><i></i></div><span class="homebar"></span>
+</div></div>
+</body>
+</html>

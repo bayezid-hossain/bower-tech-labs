@@ -9,7 +9,8 @@
     "lint": "eslint",
     "test": "vitest run",
     "test:visual": "playwright test && python scripts/visual_diff.py",
-    "assets": "python scripts/extract-assets.py"
+    "assets": "python scripts/extract-assets.py",
+    "mockups": "node scripts/render-mockups.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

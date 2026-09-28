@@ -1,0 +1,73 @@
+<!doctype html>
+<html style="--w:1072px;--h:1224px">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  body { background: radial-gradient(900px 700px at 50% 30%, #ffffff 0%, rgba(255,255,255,0) 70%), linear-gradient(180deg, #e9f3f9 0%, #d3e7f2 100%); }
+  .desk { position: absolute; left: 0; right: 0; bottom: 0; height: 306px; background: linear-gradient(180deg, #cfe3ee 0%, #b9d4e4 100%); }
+  .monitor { left: 50%; top: 240px; width: 940px; transform: translateX(-50%); }
+  .screen { height: 530px; font-size: 12px; }
+  .site { position: absolute; inset: 0; background: linear-gradient(180deg, #f4f9fd 0%, #ffffff 100%); }
+  .site nav { height: 56px; display: flex; align-items: center; padding: 0 36px; gap: 26px; font-weight: 500; color: var(--body); }
+  .site nav .brand { font-weight: 800; font-size: 17px; color: var(--navy); display: flex; align-items: center; gap: 8px; margin-right: auto; }
+  .orb { width: 22px; height: 22px; border-radius: 50%; background: conic-gradient(from 200deg, #1e66d6, #7fb0ee, #003853, #1e66d6); }
+  .hero { text-align: center; padding: 44px 60px 0; }
+  .hero h1 { font-size: 44px; line-height: 1.05; letter-spacing: -0.04em; font-weight: 800; color: var(--ink); }
+  .hero h1 em { font-style: normal; background: linear-gradient(90deg, #1e66d6, #003853); -webkit-background-clip: text; color: transparent; }
+  .hero p { font-size: 14px; color: var(--body); max-width: 440px; margin: 14px auto 20px; line-height: 1.5; }
+  .shot { position: absolute; left: 90px; right: 90px; bottom: -30px; height: 190px; border-radius: 14px 14px 0 0; background: #fff; border: 1px solid var(--line); box-shadow: 0 -10px 40px -20px rgba(0,56,83,.35); padding: 14px; display: grid; grid-template-columns: 150px 1fr 1fr; gap: 12px; }
+  .col-card { border-radius: 10px; background: #f6f9fc; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .deal { background: #fff; border-radius: 8px; padding: 8px 10px; box-shadow: 0 2px 6px rgba(0,56,83,.08); font-size: 10.5px; }
+  .phone { right: 62px; top: 610px; width: 220px; height: 456px; border-radius: 40px; padding: 8px; transform: rotate(4deg); }
+  .phone .screen { border-radius: 33px; height: 100%; }
+  .phone .island { width: 70px; height: 20px; top: 10px; }
+  .badge { position: absolute; left: 70px; top: 150px; background: #fff; border-radius: 18px; padding: 16px 20px; box-shadow: var(--shadow-md); display: flex; gap: 14px; align-items: center; }
+  .ring { width: 54px; height: 54px; border-radius: 50%; background: conic-gradient(#16a37a 0 98%, #e3edf3 98% 100%); display: grid; place-items: center; }
+  .ring span { width: 42px; height: 42px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-weight: 800; color: #16a37a; font-size: 16px; }
+</style>
+</head>
+<body>
+<div class="desk"></div>
+
+<div class="monitor">
+  <div class="panel"><div class="screen">
+    <div class="site">
+      <nav><span class="brand"><span class="orb"></span>Orbital</span><span>Product</span><span>Customers</span><span>Pricing</span><span>Docs</span><span class="btn dark" style="height:32px;font-size:12px;padding:0 14px">Start free</span></nav>
+      <div class="hero">
+        <span class="pill blue" style="font-size:11px">New · AI follow-ups are live</span>
+        <h1 style="margin-top:14px">The CRM your team<br/><em>actually enjoys</em> using</h1>
+        <p>Pipelines, inbox and forecasting in one calm workspace. Close deals without the busywork.</p>
+        <div class="row gap-10" style="justify-content:center"><span class="btn primary" style="height:38px;font-size:13px">Get started — it’s free</span><span class="btn ghost" style="height:38px;font-size:13px">Book a demo</span></div>
+      </div>
+      <div class="shot">
+        <div class="col" style="gap:8px;font-size:10.5px;color:var(--body)"><b style="color:var(--ink);font-size:12px">Pipelines</b><span style="color:var(--accent);font-weight:600">● Enterprise</span><span>● Mid-market</span><span>● Partners</span></div>
+        <div class="col-card"><b style="font-size:11px">Qualified · 12</b><div class="deal"><b>Helix Health</b><div class="muted">$48,000</div></div><div class="deal"><b>Brightline</b><div class="muted">$22,500</div></div></div>
+        <div class="col-card"><b style="font-size:11px">Proposal · 7</b><div class="deal" style="border-left:3px solid var(--accent)"><b>Kinetic Co.</b><div class="muted">$96,000</div></div><div class="deal"><b>Northwind</b><div class="muted">$31,200</div></div></div>
+      </div>
+    </div>
+  </div></div>
+  <div class="neck"></div><div class="foot"></div>
+</div>
+
+<div class="badge">
+  <div class="ring"><span>98</span></div>
+  <div><div style="font-weight:700;font-size:15px">Performance</div><div class="muted" style="font-size:12.5px">LCP 1.1s · CLS 0.01</div></div>
+</div>
+
+<div class="phone"><div class="screen"><span class="island"></span>
+  <div class="site" style="padding-top:38px">
+    <div class="row between" style="padding:0 16px"><span class="row gap-6" style="font-weight:800;color:var(--navy);font-size:13px"><span class="orb" style="width:16px;height:16px"></span>Orbital</span><span style="width:18px;height:12px;background:linear-gradient(var(--ink),var(--ink)) 0 0/100% 2px no-repeat,linear-gradient(var(--ink),var(--ink)) 0 5px/100% 2px no-repeat,linear-gradient(var(--ink),var(--ink)) 0 10px/100% 2px no-repeat"></span></div>
+    <div style="padding:26px 16px 0;text-align:center">
+      <span class="pill blue" style="font-size:9px;padding:3px 8px">AI follow-ups are live</span>
+      <div style="font-size:24px;font-weight:800;letter-spacing:-0.04em;line-height:1.08;margin-top:10px">The CRM your team <span style="color:var(--accent)">actually enjoys</span></div>
+      <div style="font-size:10.5px;color:var(--body);margin:10px 0 14px;line-height:1.45">Pipelines, inbox and forecasting in one calm workspace.</div>
+      <div class="btn primary" style="width:100%;height:36px;font-size:12px">Get started</div>
+      <div class="card" style="margin-top:16px;padding:10px;text-align:left;font-size:10px"><b>Q3 forecast</b><div style="font-size:18px;font-weight:800;margin:2px 0">$1.8M</div>
+        <svg viewBox="0 0 160 40" width="100%" height="40"><path d="M0 34 L20 30 L40 32 L60 22 L80 24 L100 14 L120 16 L140 8 L160 4" fill="none" stroke="#1e66d6" stroke-width="2.5"/></svg></div>
+    </div>
+  </div>
+  <span class="homebar" style="width:80px"></span>
+</div></div>
+</body>
+</html>

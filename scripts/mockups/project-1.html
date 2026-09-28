@@ -1,0 +1,71 @@
+<!doctype html>
+<html style="--w:1100px;--h:1006px">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  body { background: linear-gradient(150deg, #f4f9fc 0%, #e0eef6 55%, #c9e0ee 100%); }
+  .browser { left: 90px; top: 204px; width: 920px; height: 600px; }
+  .app { display: flex; height: calc(100% - 40px); font-size: 12px; }
+  .side { width: 64px; background: #003853; display: flex; flex-direction: column; align-items: center; gap: 14px; padding-top: 18px; }
+  .side i { width: 36px; height: 36px; border-radius: 11px; display: block; background: rgba(255,255,255,.08); }
+  .side i.on { background: #1e66d6; }
+  .main { flex: 1; padding: 22px 26px; background: #fbfdfe; display: flex; flex-direction: column; gap: 16px; }
+  .grid { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 14px; }
+  .cc { border-radius: 18px; padding: 18px; color: #fff; background: linear-gradient(135deg, #1e66d6 0%, #003853 100%); position: relative; overflow: hidden; height: 150px; }
+  .cc::after { content: ""; position: absolute; right: -30px; bottom: -60px; width: 170px; height: 170px; border-radius: 50%; background: rgba(255,255,255,.08); }
+  .stat { padding: 16px 18px; }
+  .stat .v { font-size: 24px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { text-align: left; font-weight: 500; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  td { padding: 10px 10px; border-bottom: 1px solid #eef3f6; }
+  .st { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; }
+  .head { position: absolute; left: 90px; right: 90px; top: 84px; display: flex; justify-content: space-between; align-items: flex-end; }
+</style>
+</head>
+<body>
+<div class="head">
+  <div><div class="caps" style="color:var(--accent)">Case study · Fintech</div><div style="font-size:34px;font-weight:800;letter-spacing:-0.03em;color:var(--navy);margin-top:6px">Ledgerly for teams</div></div>
+  <div class="row gap-8"><span class="pill navy">Web app</span><span class="pill blue">Design system</span><span class="pill" style="background:#fff;color:var(--body)">2026</span></div>
+</div>
+
+<div class="browser">
+  <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url">app.ledgerly.io/overview</div></div>
+  <div class="app">
+    <div class="side"><i style="background:linear-gradient(135deg,#7fb0ee,#1e66d6);border-radius:50%"></i><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="main">
+      <div class="row between"><div><div class="muted">Wednesday, 28 Sep</div><div style="font-size:20px;font-weight:800;letter-spacing:-0.02em">Company overview</div></div>
+        <div class="row gap-8"><span class="btn ghost" style="height:34px;font-size:12px">Export</span><span class="btn primary" style="height:34px;font-size:12px">+ New payment</span></div></div>
+      <div class="grid">
+        <div class="cc"><div class="row between"><span style="opacity:.8">Operating account</span><b>LEDGERLY</b></div>
+          <div style="font-size:28px;font-weight:800;letter-spacing:-0.03em;margin-top:18px">$482,190.00</div>
+          <div class="row between" style="margin-top:22px;opacity:.85;font-size:11px;position:relative;z-index:1"><span>•••• 2291</span><span>Visa Business</span></div></div>
+        <div class="card stat"><div class="muted">Money in · 30d</div><div class="v">$214,800</div><span class="up">▲ 14.2%</span>
+          <svg viewBox="0 0 200 40" width="100%" height="40" style="margin-top:6px"><path d="M0 32 L25 28 L50 30 L75 20 L100 22 L125 14 L150 16 L175 8 L200 6" fill="none" stroke="#16a37a" stroke-width="2.5"/></svg></div>
+        <div class="card stat"><div class="muted">Money out · 30d</div><div class="v">$138,420</div><span class="down">▼ 3.8%</span>
+          <svg viewBox="0 0 200 40" width="100%" height="40" style="margin-top:6px"><path d="M0 10 L25 14 L50 12 L75 20 L100 18 L125 24 L150 22 L175 28 L200 30" fill="none" stroke="#1e66d6" stroke-width="2.5"/></svg></div>
+      </div>
+      <div class="card" style="padding:14px 16px;flex:1">
+        <div class="row between" style="margin-bottom:4px"><b style="font-size:14px">Recent invoices</b><span style="color:var(--accent);font-weight:600">View all</span></div>
+        <table>
+          <tr><th>Client</th><th>Invoice</th><th>Due</th><th>Amount</th><th>Status</th></tr>
+          <tr><td class="row gap-8"><span class="av a2" style="width:24px;height:24px"></span><b>Northwind Labs</b></td><td>INV-2041</td><td>Oct 02</td><td><b>$12,400</b></td><td><span class="st" style="background:#dff5ec;color:#16a37a">Paid</span></td></tr>
+          <tr><td class="row gap-8"><span class="av a5" style="width:24px;height:24px"></span><b>Fernhill Studio</b></td><td>INV-2040</td><td>Oct 05</td><td><b>$3,180</b></td><td><span class="st" style="background:#fff3df;color:#c77d12">Pending</span></td></tr>
+          <tr><td class="row gap-8"><span class="av a3" style="width:24px;height:24px"></span><b>Helix Health</b></td><td>INV-2039</td><td>Oct 09</td><td><b>$48,000</b></td><td><span class="st" style="background:#e4eefc;color:#1e66d6">Scheduled</span></td></tr>
+          <tr><td class="row gap-8"><span class="av a4" style="width:24px;height:24px"></span><b>Brightline Co.</b></td><td>INV-2038</td><td>Oct 12</td><td><b>$7,950</b></td><td><span class="st" style="background:#dff5ec;color:#16a37a">Paid</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tag-float" style="left:44px;top:772px;z-index:3"><span style="width:38px;height:38px;border-radius:12px;background:#dff5ec;display:grid;place-items:center;color:#16a37a;font-weight:800">✓</span><div><b style="font-size:14px">Payment sent</b><div class="muted">$12,400 to Northwind Labs</div></div></div>
+<div class="tag-float" style="right:40px;top:164px;z-index:3"><div><div class="muted">Month-end close</div><b style="font-size:22px;letter-spacing:-0.02em">3 days → 4 hrs</b></div></div>
+
+<div class="row gap-24" style="position:absolute;left:90px;right:90px;bottom:118px;justify-content:center;font-size:14px;color:var(--body)">
+  <span><b style="color:var(--navy);font-size:18px">+38%</b>&nbsp; activation</span><span style="color:#b9c9d2">|</span>
+  <span><b style="color:var(--navy);font-size:18px">4.8★</b>&nbsp; G2 rating</span><span style="color:#b9c9d2">|</span>
+  <span><b style="color:var(--navy);font-size:18px">12k</b>&nbsp; finance teams</span>
+</div>
+</body>
+</html>

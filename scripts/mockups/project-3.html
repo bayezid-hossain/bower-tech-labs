@@ -1,0 +1,87 @@
+<!doctype html>
+<html style="--w:1100px;--h:1006px">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .scene { position: absolute; inset: 0; perspective: 2200px; }
+  .dash { position: absolute; left: 110px; top: 190px; width: 880px; height: 610px; border-radius: 22px; background: #fbfdfe; box-shadow: 0 60px 120px -40px rgba(0,0,0,.7); transform: rotateX(18deg) rotateY(-10deg) rotateZ(3deg); overflow: hidden; display: flex; font-size: 12px; color: var(--ink); }
+  .side { width: 180px; background: #f2f7fa; border-right: 1px solid var(--line); padding: 20px 14px; display: flex; flex-direction: column; gap: 4px; }
+  .nav { padding: 9px 10px; border-radius: 9px; color: var(--body); font-weight: 500; }
+  .nav.on { background: #fff; color: var(--accent); font-weight: 600; box-shadow: var(--shadow-sm); }
+  .main { flex: 1; padding: 20px 22px; display: flex; flex-direction: column; gap: 14px; }
+  .kpis { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+  .kpi { padding: 12px 14px; }
+  .kpi .v { font-size: 22px; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0 2px; }
+  .row2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; flex: 1; }
+  .heat { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; margin-top: 10px; }
+  .heat i { display: block; aspect-ratio: 1; border-radius: 4px; }
+  .dept { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid #eef3f6; }
+  .bar { flex: 1; height: 6px; border-radius: 4px; background: #e8f0f6; overflow: hidden; }
+  .bar span { display: block; height: 100%; border-radius: 4px; }
+  .float { position: absolute; background: #fff; border-radius: 20px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.55); padding: 18px 20px; z-index: 3; }
+  .head { position: absolute; left: 110px; top: 70px; color: #fff; }
+</style>
+</head>
+<body>
+<div class="stage bg-navy grid-dots"></div>
+
+<div class="head"><div class="caps" style="color:#7fb0ee">Case study · Healthcare</div><div style="font-size:32px;font-weight:800;letter-spacing:-0.03em;margin-top:6px">Carepoint Operations</div></div>
+<div class="abs row gap-8" style="right:110px;top:98px"><span class="pill" style="background:rgba(255,255,255,.1);color:#fff">Dashboard</span><span class="pill" style="background:#1e66d6;color:#fff">Data viz</span></div>
+
+<div class="scene">
+  <div class="dash">
+    <div class="side">
+      <div class="row gap-8" style="font-weight:800;font-size:15px;color:var(--navy);margin-bottom:16px"><span style="width:24px;height:24px;border-radius:8px;background:#1e66d6;color:#fff;display:grid;place-items:center;font-size:16px">+</span>Carepoint</div>
+      <div class="nav on">Overview</div><div class="nav">Admissions</div><div class="nav">Emergency</div><div class="nav">Beds &amp; wards</div><div class="nav">Staffing</div><div class="nav">Reports</div>
+    </div>
+    <div class="main">
+      <div class="row between"><div><div class="muted">St. Mary’s General · Today</div><div style="font-size:19px;font-weight:800;letter-spacing:-0.02em">Hospital overview</div></div><span class="pill green">● All systems normal</span></div>
+      <div class="kpis">
+        <div class="card kpi"><div class="muted">Patients today</div><div class="v">1,248</div><span class="up">+6.2%</span></div>
+        <div class="card kpi"><div class="muted">Bed occupancy</div><div class="v">86%</div><span class="muted">412 / 480</span></div>
+        <div class="card kpi"><div class="muted">Avg. ER wait</div><div class="v">18 min</div><span class="up">−4 min</span></div>
+        <div class="card kpi"><div class="muted">Readmission</div><div class="v">7.2%</div><span class="up">−0.8 pts</span></div>
+      </div>
+      <div class="row2">
+        <div class="card" style="padding:14px 16px;display:flex;flex-direction:column">
+          <div class="row between"><b style="font-size:13px">Admissions vs discharges</b><span class="muted">Last 14 days</span></div>
+          <svg viewBox="0 0 400 170" preserveAspectRatio="none" style="flex:1;margin-top:8px;width:100%;height:100%">
+            <defs><linearGradient id="h" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1e66d6" stop-opacity=".25"/><stop offset="1" stop-color="#1e66d6" stop-opacity="0"/></linearGradient></defs>
+            <g stroke="#eef3f6"><line x1="0" x2="400" y1="30" y2="30"/><line x1="0" x2="400" y1="80" y2="80"/><line x1="0" x2="400" y1="130" y2="130"/></g>
+            <path d="M0 110 C30 96 50 104 80 88 S130 70 160 80 S220 60 250 54 S310 66 340 44 S380 36 400 30 L400 170 L0 170Z" fill="url(#h)"/>
+            <path d="M0 110 C30 96 50 104 80 88 S130 70 160 80 S220 60 250 54 S310 66 340 44 S380 36 400 30" fill="none" stroke="#1e66d6" stroke-width="3"/>
+            <path d="M0 126 C30 120 50 118 80 110 S130 100 160 104 S220 90 250 86 S310 88 340 72 S380 66 400 62" fill="none" stroke="#003853" stroke-width="2.5" stroke-dasharray="6 5"/>
+          </svg>
+        </div>
+        <div class="card" style="padding:14px 16px">
+          <b style="font-size:13px">ER arrivals by hour</b>
+          <div class="heat" id="heat"></div>
+          <div class="dept" style="margin-top:8px"><span style="width:74px">Cardiology</span><div class="bar"><span style="width:88%;background:#1e66d6"></span></div><b>88%</b></div>
+          <div class="dept"><span style="width:74px">Pediatrics</span><div class="bar"><span style="width:64%;background:#7fb0ee"></span></div><b>64%</b></div>
+          <div class="dept"><span style="width:74px">Oncology</span><div class="bar"><span style="width:76%;background:#003853"></span></div><b>76%</b></div>
+          <div class="dept"><span style="width:74px">Orthopedics</span><div class="bar"><span style="width:52%;background:#1e66d6"></span></div><b>52%</b></div>
+          <div class="dept" style="border:0"><span style="width:74px">Neurology</span><div class="bar"><span style="width:41%;background:#7fb0ee"></span></div><b>41%</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="float" style="left:60px;top:690px;width:250px">
+  <div class="row between"><b style="font-size:14px">Heart rate</b><span class="pill" style="background:#fde8eb;color:#e5566b;font-size:11px">Live</span></div>
+  <div class="row gap-6" style="margin-top:6px;align-items:baseline"><span style="font-size:34px;font-weight:800;letter-spacing:-0.03em">72</span><span class="muted">bpm · Bed 14B</span></div>
+  <svg viewBox="0 0 210 40" width="210" height="40"><path d="M0 22 H50 L58 8 L66 34 L74 22 H110 L118 4 L128 38 L136 22 H210" fill="none" stroke="#e5566b" stroke-width="2.5" stroke-linejoin="round"/></svg>
+</div>
+<div class="float" style="right:60px;top:150px;padding:14px 18px" >
+  <div class="muted" style="font-size:12px">Discharge time</div><div class="row gap-8"><b style="font-size:22px;letter-spacing:-0.02em">−31%</b><span class="pill green">since launch</span></div>
+</div>
+
+<script>
+  const h = document.getElementById('heat');
+  const v = [1,1,0,0,1,2,3,4,4,3,3,2, 2,3,4,4,3,3,4,4,3,2,2,1, 1,2,3,3,4,4,3,2,2,1,1,0];
+  const c = ['#eef4f9','#c0dceb','#7fb0ee','#1e66d6','#003853'];
+  v.forEach(x => { const i = document.createElement('i'); i.style.background = c[x]; h.appendChild(i); });
+</script>
+</body>
+</html>

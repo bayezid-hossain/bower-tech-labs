@@ -1,0 +1,72 @@
+<!doctype html>
+<html style="--w:1116px;--h:728px">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .scene { position: absolute; inset: 0; perspective: 2000px; }
+  .before { left: 50px; top: 130px; width: 500px; height: 440px; transform: rotateY(18deg) scale(.94); transform-origin: left center; filter: saturate(.55); }
+  .before .site { font-family: Georgia, "Times New Roman", serif; font-size: 12px; color: #333; background: #f2f0ea; height: 100%; }
+  .after { left: 480px; top: 90px; width: 590px; height: 520px; z-index: 2; }
+  .label { position: absolute; top: 52px; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .label i { width: 8px; height: 8px; border-radius: 50%; display: block; }
+  .old-nav { background: #5a6b7b; color: #fff; display: flex; gap: 14px; padding: 7px 12px; font-size: 11px; }
+  .old-nav span { text-decoration: underline; }
+  .after .site { padding: 24px 30px; font-size: 12px; }
+  .metric { position: absolute; background: #fff; border-radius: 16px; padding: 14px 18px; box-shadow: var(--shadow-md); z-index: 3; }
+</style>
+</head>
+<body>
+<div class="stage bg-soft grid-dots"></div>
+
+<div class="label" style="left:70px;color:var(--muted)"><i style="background:#b9c9d2"></i>Before</div>
+<div class="label" style="left:500px;color:var(--accent)"><i style="background:var(--accent)"></i>After</div>
+
+<div class="scene">
+  <div class="browser before">
+    <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url">greenleafdental.com/index.html</div></div>
+    <div class="site">
+      <div style="background:#2f6b3a;color:#fff;padding:14px 14px;font-size:22px;font-weight:bold">Greenleaf Dental Clinic <span style="font-size:11px;font-weight:normal;float:right;margin-top:8px">Call: (555) 012-8890</span></div>
+      <div class="old-nav"><span>Home</span><span>About Us</span><span>Services</span><span>Our Team</span><span>Insurance</span><span>Contact</span></div>
+      <div style="display:flex;gap:10px;padding:12px">
+        <div style="flex:1">
+          <div style="font-size:17px;font-weight:bold;color:#2f6b3a;margin-bottom:6px">Welcome to Our Website!!</div>
+          <div style="line-height:1.5">We are a family dental practice serving the community since 1998. Click the links on the left to learn more about our services. We accept most insurance plans.</div>
+          <div style="margin-top:10px;display:inline-block;background:#e0a000;color:#000;padding:6px 10px;border:2px outset #f0c040;font-weight:bold">CLICK HERE to book!</div>
+          <div style="margin-top:12px;border:1px solid #bbb;background:#fff;padding:8px;line-height:1.5"><b>NEWS:</b> Office closed on holidays. New patients welcome. Parking available in rear.</div>
+        </div>
+        <div style="width:130px;background:#ddd;border:1px solid #aaa;height:150px;display:grid;place-items:center;color:#777;font-size:11px;text-align:center">[ photo of<br/>our office ]</div>
+      </div>
+      <div style="margin:0 12px;border-top:1px dashed #999;padding-top:6px;color:#666;font-size:10px">© 1998–2019 Greenleaf Dental · Best viewed in Internet Explorer · Visitors: 004821</div>
+    </div>
+  </div>
+</div>
+
+<div class="browser after">
+  <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url">greenleaf.dental</div></div>
+  <div class="site">
+    <div class="row between" style="color:var(--body)"><span class="row gap-8" style="font-weight:800;font-size:15px;color:var(--navy)"><span style="width:22px;height:22px;border-radius:50% 50% 50% 6px;background:linear-gradient(135deg,#1e66d6,#003853)"></span>Greenleaf</span><span class="row gap-16"><span>Treatments</span><span>Team</span><span>Pricing</span><span class="btn primary" style="height:30px;font-size:11.5px;padding:0 14px">Book online</span></span></div>
+    <div class="row gap-20" style="margin-top:34px;align-items:stretch">
+      <div style="flex:1.15">
+        <span class="pill green" style="font-size:10.5px">★ 4.9 · 1,200 Google reviews</span>
+        <div style="font-size:34px;font-weight:800;letter-spacing:-0.04em;line-height:1.04;margin:12px 0 10px">Gentle dental care, booked in 60 seconds</div>
+        <div style="font-size:13px;color:var(--body);line-height:1.5">Same-week appointments, clear pricing and a team that explains everything.</div>
+        <div class="row gap-8" style="margin-top:18px"><span class="btn primary" style="height:38px;font-size:12.5px">Book a check-up</span><span class="btn ghost" style="height:38px;font-size:12.5px">See prices</span></div>
+      </div>
+      <div style="flex:.85;border-radius:18px;background:linear-gradient(160deg,#eaf4fa,#c0dceb);padding:14px;display:flex;flex-direction:column;gap:8px;justify-content:flex-end">
+        <div class="card" style="padding:12px;font-size:11px"><b style="font-size:12.5px">Next available</b>
+          <div class="row gap-6" style="margin-top:8px"><span class="pill" style="background:#f1f6f9;font-size:10.5px">Tue 9:30</span><span class="pill navy" style="font-size:10px;padding:4px 8px">Tue 11:00</span><span class="pill" style="background:#f1f6f9;font-size:10px;padding:4px 8px">Wed 14:15</span></div></div>
+        <div class="card row gap-10" style="padding:10px 12px;font-size:11px"><span class="av a1"></span><div><b>Dr. Elena Moss</b><div class="muted">Cosmetic dentistry</div></div></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px">
+      <div style="border-radius:12px;background:#f4f8fb;padding:12px"><b>Check-up &amp; clean</b><div class="muted" style="margin-top:2px">from $89</div></div>
+      <div style="border-radius:12px;background:#f4f8fb;padding:12px"><b>Whitening</b><div class="muted" style="margin-top:2px">from $249</div></div>
+      <div style="border-radius:12px;background:#f4f8fb;padding:12px"><b>Invisalign</b><div class="muted" style="margin-top:2px">free consult</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="metric" style="left:760px;top:590px"><div class="muted" style="font-size:12px">Online bookings</div><div class="row gap-8"><b style="font-size:26px;letter-spacing:-0.03em">+212%</b><span class="pill green">after launch</span></div></div>
+</body>
+</html>

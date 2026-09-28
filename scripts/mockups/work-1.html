@@ -1,0 +1,74 @@
+<!doctype html>
+<html style="--w:1072px;--h:1224px">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  body { background: linear-gradient(170deg, #eef6fb 0%, #d6e9f4 100%); }
+  .scene { position: absolute; inset: 0; perspective: 2600px; }
+  .browser { left: 110px; top: 110px; width: 852px; height: 1004px; transform: rotateY(-8deg) rotateX(4deg); }
+  .site { font-size: 12px; }
+  nav { height: 60px; display: flex; align-items: center; padding: 0 36px; gap: 26px; color: var(--body); font-weight: 500; }
+  nav .brand { margin-right: auto; font-weight: 800; font-size: 17px; color: var(--ink); display: flex; gap: 8px; align-items: center; }
+  .spark { width: 24px; height: 24px; border-radius: 8px; background: linear-gradient(135deg, #1e66d6, #003853); display: grid; place-items: center; }
+  .hero { text-align: center; padding: 36px 70px 0; position: relative; }
+  .hero::before { content: ""; position: absolute; left: 50%; top: -40px; width: 700px; height: 420px; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(30,102,214,.16), rgba(30,102,214,0) 65%); }
+  h1 { font-size: 50px; line-height: 1.02; letter-spacing: -0.045em; font-weight: 800; position: relative; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .lead { font-size: 15px; color: var(--body); max-width: 470px; margin: 16px auto 22px; line-height: 1.5; position: relative; }
+  .appshot { margin: 34px 44px 0; border-radius: 16px; border: 1px solid var(--line); background: #fff; box-shadow: var(--shadow-md); display: flex; height: 330px; overflow: hidden; position: relative; }
+  .appshot .left { width: 170px; background: #f6f9fc; border-right: 1px solid var(--line); padding: 16px 12px; display: flex; flex-direction: column; gap: 6px; font-size: 11.5px; color: var(--body); }
+  .appshot .left .on { background: #fff; color: var(--accent); font-weight: 600; border-radius: 8px; padding: 7px 9px; box-shadow: var(--shadow-sm); }
+  .appshot .left span { padding: 7px 9px; }
+  .task { white-space: nowrap; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; border: 1px solid #eef3f6; margin-bottom: 8px; font-size: 12px; }
+  .task i { width: 16px; height: 16px; border-radius: 5px; border: 2px solid #b9c9d2; display: block; flex: none; }
+  .task i.done { background: var(--accent); border-color: var(--accent); }
+  .ai { border-radius: 14px; background: linear-gradient(135deg, #eef5fe, #e4eefc); border: 1px solid #d3e3fa; padding: 14px; font-size: 12px; line-height: 1.5; }
+  .logos { display: flex; justify-content: center; gap: 44px; margin-top: 30px; color: #9fb2bd; font-weight: 800; font-size: 17px; letter-spacing: -0.02em; }
+  .feat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 28px 44px; }
+  .feat div { border-radius: 14px; background: #f6f9fc; padding: 16px; font-size: 12px; color: var(--body); line-height: 1.45; }
+  .feat b { display: block; color: var(--ink); font-size: 13.5px; margin: 10px 0 4px; }
+  .feat .ic { width: 34px; height: 34px; border-radius: 10px; background: #fff; box-shadow: var(--shadow-sm); display: grid; place-items: center; }
+</style>
+</head>
+<body>
+<div class="stage grid-dots"></div>
+<div class="scene">
+  <div class="browser">
+    <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url">tempo.ai</div></div>
+    <div class="site">
+      <nav><span class="brand"><span class="spark"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0 L7.4 4.6 L12 6 L7.4 7.4 L6 12 L4.6 7.4 L0 6 L4.6 4.6Z" fill="#fff"/></svg></span>Tempo</span><span>Features</span><span>Integrations</span><span>Pricing</span><span class="btn dark" style="height:34px;font-size:12px;padding:0 16px">Try Tempo free</span></nav>
+      <div class="hero">
+        <span class="pill blue" style="position:relative">✦ Tempo AI 2.0 — now plans your week</span>
+        <h1 style="margin-top:16px">Your work, planned<br/>by <em>AI</em> in seconds</h1>
+        <div class="lead">Tempo turns messy inboxes, docs and meetings into a focused daily plan — so your team ships more and stresses less.</div>
+        <div class="row gap-10" style="justify-content:center;position:relative"><span class="btn primary" style="height:44px">Start for free</span><span class="btn ghost" style="height:44px">Watch 2-min demo</span></div>
+      </div>
+      <div class="appshot">
+        <div class="left"><b style="color:var(--ink);font-size:13px;padding:0 9px 8px">Today</b><span class="on">My plan</span><span>Inbox · 12</span><span>Meetings</span><span>Projects</span><span>Focus mode</span></div>
+        <div style="flex:1;padding:18px 20px">
+          <div class="row between" style="margin-bottom:12px"><b style="font-size:15px">Wednesday plan</b><span class="pill green" style="font-size:11px">4h 20m focus time</span></div>
+          <div class="task"><i class="done"></i><span style="text-decoration:line-through;color:var(--muted)">Review Q4 roadmap draft</span><span class="muted" style="margin-left:auto">9:00</span></div>
+          <div class="task" style="border-color:#c9dcf8;background:#f7faff"><i></i><b>Write Tempo 2.0 launch brief</b><span class="pill blue" style="margin-left:auto;font-size:10.5px">Focus · 90m</span></div>
+          <div class="task"><i></i><span>Reply to Northwind about pilot</span><span class="muted" style="margin-left:auto">13:30</span></div>
+          <div class="task"><i></i><span>Design sync with Maya &amp; Leo</span><span class="muted" style="margin-left:auto">15:00</span></div>
+        </div>
+        <div style="width:230px;padding:18px 18px 18px 0">
+          <div class="ai"><div class="row gap-8" style="margin-bottom:6px"><span class="spark" style="width:20px;height:20px;border-radius:6px"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M6 0 L7.4 4.6 L12 6 L7.4 7.4 L6 12 L4.6 7.4 L0 6 L4.6 4.6Z" fill="#fff"/></svg></span><b>Tempo suggests</b></div>
+            Move the design sync to Thursday — you’ll gain a 2-hour focus block before the launch brief is due.
+            <div class="row gap-6" style="margin-top:10px"><span class="btn primary" style="height:28px;font-size:11px;padding:0 12px">Apply</span><span class="btn ghost" style="height:28px;font-size:11px;padding:0 12px">Dismiss</span></div></div>
+        </div>
+      </div>
+      <div class="logos"><span>northwind</span><span>fernhill</span><span>KINETIC</span><span>helix</span><span>brightline</span></div>
+      <div class="feat">
+        <div><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e66d6" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><b>Auto-scheduling</b>Plans land on your calendar around real meetings.</div>
+        <div><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e66d6" stroke-width="2.4"><path d="M4 6h16M4 12h10M4 18h7"/></svg></span><b>Inbox to tasks</b>Emails and Slack threads become clear next steps.</div>
+        <div><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e66d6" stroke-width="2.4"><path d="M3 17l6-6 4 4 8-8"/></svg></span><b>Team insights</b>See focus time and blockers across every project.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tag-float" style="right:44px;top:560px;z-index:3;padding:14px 18px"><div><div class="muted" style="font-size:12px">Hours saved / week</div><b style="font-size:26px;letter-spacing:-0.03em;color:var(--accent)">6.5h</b></div></div>
+</body>
+</html>

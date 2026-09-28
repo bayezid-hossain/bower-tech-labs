@@ -1,0 +1,83 @@
+<!doctype html>
+<html style="--w:1116px;--h:728px">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .editor { position: absolute; left: 56px; top: 92px; width: 520px; height: 520px; border-radius: 16px; background: #0b1f2a; box-shadow: var(--shadow-lg); overflow: hidden; z-index: 1; font-family: "JetBrains Mono", Consolas, "Cascadia Code", monospace; }
+  .editor .bar { height: 40px; display: flex; align-items: center; gap: 16px; padding: 0 16px; background: #0f2733; border-bottom: 1px solid #16323f; }
+  .tabs { display: flex; gap: 2px; font-family: Inter, sans-serif; font-size: 11.5px; }
+  .tabs span { padding: 6px 12px; border-radius: 7px; color: #7f9aa8; }
+  .tabs span.on { background: #0b1f2a; color: #e6f1f7; }
+  .code { margin: 0; padding: 18px 0; font-size: 13px; line-height: 1.75; color: #c9dbe5; counter-reset: ln; }
+  .code div { padding-left: 54px; position: relative; white-space: pre; }
+  .code div::before { counter-increment: ln; content: counter(ln); position: absolute; left: 0; width: 36px; text-align: right; color: #3d5b6a; }
+  .code div.hl { background: rgba(30,102,214,.18); box-shadow: inset 2px 0 0 #1e66d6; }
+  .k { color: #7fb0ee; } .s { color: #8fd6b5; } .t { color: #f0c27a; } .a { color: #c3a6ff; } .c { color: #50707f; font-style: italic; }
+  .browser { left: 470px; top: 150px; width: 600px; height: 460px; z-index: 2; }
+  .site { padding: 26px 30px; }
+  .term { position: absolute; left: 110px; top: 560px; width: 400px; border-radius: 14px; background: #001b25; color: #c9dbe5; font-family: Consolas, monospace; font-size: 12.5px; padding: 14px 16px; line-height: 1.7; box-shadow: var(--shadow-lg); z-index: 3; border: 1px solid #16323f; }
+</style>
+</head>
+<body>
+<div class="stage bg-soft grid-dots"></div>
+
+<div class="editor">
+  <div class="bar"><div class="dots" style="display:flex;gap:7px"><i style="width:11px;height:11px;border-radius:50%;background:#ff6159;display:block"></i><i style="width:11px;height:11px;border-radius:50%;background:#ffbd2e;display:block"></i><i style="width:11px;height:11px;border-radius:50%;background:#28c941;display:block"></i></div>
+    <div class="tabs"><span class="on">Hero.tsx</span><span>page.tsx</span><span>globals.css</span></div></div>
+  <div class="code">
+<div><span class="k">export function</span> <span class="t">Hero</span>() {</div>
+<div>  <span class="k">return</span> (</div>
+<div>    &lt;<span class="t">section</span> <span class="a">className</span>=<span class="s">"hero"</span>&gt;</div>
+<div>      &lt;<span class="t">Badge</span>&gt;New collection&lt;/<span class="t">Badge</span>&gt;</div>
+<div class="hl">      &lt;<span class="t">h1</span>&gt;Furniture made to last&lt;/<span class="t">h1</span>&gt;</div>
+<div>      &lt;<span class="t">p</span>&gt;Solid oak, built by hand.&lt;/<span class="t">p</span>&gt;</div>
+<div>      &lt;<span class="t">Button</span> <span class="a">href</span>=<span class="s">"/shop"</span>&gt;</div>
+<div>        Shop the range</div>
+<div>      &lt;/<span class="t">Button</span>&gt;</div>
+<div>      &lt;<span class="t">ProductGrid</span> <span class="a">items</span>={<span class="a">featured</span>} /&gt;</div>
+<div>    &lt;/<span class="t">section</span>&gt;</div>
+<div>  );</div>
+<div>}</div>
+<div><span class="c">// 100 Lighthouse · 0.9s LCP</span></div>
+</div>
+</div>
+
+<div class="browser">
+  <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url">oakandfolk.com</div></div>
+  <div class="site">
+    <div class="row between" style="font-size:12px;color:var(--body)"><b style="font-size:16px;color:var(--navy);letter-spacing:-0.02em">oak&amp;folk</b><span class="row gap-16"><span>Shop</span><span>Studio</span><span>Journal</span><span class="btn dark" style="height:28px;font-size:11px;padding:0 12px">Cart · 2</span></span></div>
+    <div class="row gap-20" style="margin-top:30px;align-items:stretch">
+      <div style="flex:1.1">
+        <span class="pill blue" style="font-size:10.5px">New collection</span>
+        <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;line-height:1.02;margin:12px 0 10px">Furniture made to last</div>
+        <div style="font-size:13px;color:var(--body);line-height:1.5">Solid oak, built by hand. Delivered flat-free across Europe.</div>
+        <div class="btn primary" style="margin-top:18px;height:38px;font-size:13px">Shop the range →</div>
+      </div>
+      <div style="flex:1;border-radius:16px;background:linear-gradient(160deg,#e6f1f8,#c0dceb);position:relative;overflow:hidden;min-height:210px">
+        <!-- chair illustration -->
+        <svg class="abs" style="left:50%;bottom:18px;transform:translateX(-50%)" width="150" height="180" viewBox="0 0 150 180">
+          <ellipse cx="75" cy="172" rx="62" ry="6" fill="rgba(0,56,83,.15)"/>
+          <rect x="30" y="18" width="90" height="70" rx="18" fill="#1e66d6"/>
+          <rect x="22" y="84" width="106" height="30" rx="12" fill="#1450b4"/>
+          <rect x="34" y="112" width="8" height="58" rx="4" fill="#003853"/><rect x="108" y="112" width="8" height="58" rx="4" fill="#003853"/>
+          <rect x="52" y="112" width="6" height="48" rx="3" fill="#0b4a6c"/><rect x="92" y="112" width="6" height="48" rx="3" fill="#0b4a6c"/>
+        </svg>
+        <span class="pill" style="position:absolute;left:12px;top:12px;background:#fff;color:var(--ink);font-size:10.5px">Lounge chair · €480</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px">
+      <div style="height:62px;border-radius:12px;background:#f4f8fb;padding:10px 12px;font-size:11px"><b>Free delivery</b><div class="muted">EU-wide in 5 days</div></div>
+      <div style="height:62px;border-radius:12px;background:#f4f8fb;padding:10px 12px;font-size:11px"><b>10-year warranty</b><div class="muted">On every frame</div></div>
+      <div style="height:62px;border-radius:12px;background:#f4f8fb;padding:10px 12px;font-size:11px"><b>4.9 ★ rating</b><div class="muted">2,300+ reviews</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="term">
+  <div><span style="color:#7fb0ee">~/oak-and-folk</span> $ npm run build</div>
+  <div style="color:#8fd6b5">✓ Compiled successfully in 4.2s</div>
+  <div style="color:#8fd6b5">✓ Deployed to production</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html style="--w:1072px;--h:1224px">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .phone { width: 330px; height: 690px; border-radius: 56px; padding: 12px; background: linear-gradient(145deg, #5d7a8a 0%, #1f3a48 30%, #0e2531 70%, #4a6878 100%); box-shadow: 0 60px 100px -30px rgba(0,0,0,.75), inset 0 0 0 1.5px rgba(255,255,255,.3); }
+  .phone .screen { border-radius: 45px; background: #06151d; color: #e8f2f8; font-size: 12.5px; }
+  .phone .island { background: #000; }
+  .phone .homebar { background: rgba(255,255,255,.7); }
+  .pa { left: 130px; top: 240px; transform: rotate(-5deg); }
+  .pb { left: 560px; top: 300px; transform: rotate(5deg); }
+  .pad { padding: 0 20px; }
+  .tok { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 16px; background: #0c2230; margin-bottom: 8px; }
+  .coin { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 14px; color: #fff; flex: none; }
+  .swapbox { border-radius: 20px; background: #0c2230; padding: 16px; }
+  .swapbox .amt { font-size: 30px; font-weight: 800; letter-spacing: -0.03em; }
+  .sel { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; border-radius: 999px; background: #143244; font-weight: 700; }
+  .fcoin { position: absolute; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 800; box-shadow: 0 20px 40px -12px rgba(0,0,0,.6), inset 0 -6px 12px rgba(0,0,0,.2), inset 0 6px 10px rgba(255,255,255,.25); }
+</style>
+</head>
+<body>
+<div class="stage bg-navy grid-dots"></div>
+<div class="abs" style="left:50%;top:50%;width:800px;height:800px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(30,102,214,.45),rgba(30,102,214,0) 65%)"></div>
+
+<div class="fcoin" style="left:80px;top:170px;width:92px;height:92px;background:linear-gradient(135deg,#7fb0ee,#1e66d6);font-size:34px">Ξ</div>
+<div class="fcoin" style="right:90px;top:180px;width:70px;height:70px;background:linear-gradient(135deg,#ffd27a,#f0a43a);font-size:28px">₿</div>
+<div class="fcoin" style="right:120px;bottom:130px;width:60px;height:60px;background:linear-gradient(135deg,#8fe0c0,#16a37a);font-size:24px">$</div>
+
+<!-- Portfolio -->
+<div class="phone pa"><div class="screen"><span class="island"></span>
+  <div class="status"><span>9:41</span><span class="sig"><b></b><i></i></span></div>
+  <div class="pad">
+    <div class="row between" style="margin:6px 0 18px"><div class="row gap-10"><span class="av a2" style="width:36px;height:36px;border-color:#06151d"></span><div><div style="font-size:11px;color:#7f9aa8">Main wallet</div><b>0x8f3…a91c</b></div></div><span style="width:36px;height:36px;border-radius:12px;background:#0c2230;display:grid;place-items:center">⌁</span></div>
+    <div style="color:#7f9aa8;font-size:12px">Total balance</div>
+    <div style="font-size:36px;font-weight:800;letter-spacing:-0.035em;margin:4px 0">$48,302.17</div>
+    <span class="pill" style="background:rgba(22,163,122,.18);color:#4fd1a5">▲ $1,284.40 · 2.7%</span>
+    <svg viewBox="0 0 290 100" width="290" height="100" style="margin:16px 0 6px">
+      <defs><linearGradient id="cg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1e66d6" stop-opacity=".45"/><stop offset="1" stop-color="#1e66d6" stop-opacity="0"/></linearGradient></defs>
+      <path d="M0 80 L20 74 L40 78 L60 60 L80 66 L100 50 L120 56 L140 40 L160 46 L180 30 L200 36 L220 22 L240 28 L260 14 L290 8 L290 100 L0 100Z" fill="url(#cg)"/>
+      <path d="M0 80 L20 74 L40 78 L60 60 L80 66 L100 50 L120 56 L140 40 L160 46 L180 30 L200 36 L220 22 L240 28 L260 14 L290 8" fill="none" stroke="#4f8be6" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="260" cy="14" r="5" fill="#fff"/>
+    </svg>
+    <div class="row gap-6" style="margin-bottom:16px;font-size:11px;font-weight:600;color:#7f9aa8"><span style="padding:5px 10px">1H</span><span style="padding:5px 10px;background:#143244;border-radius:8px;color:#fff">1D</span><span style="padding:5px 10px">1W</span><span style="padding:5px 10px">1M</span><span style="padding:5px 10px">1Y</span></div>
+    <div class="tok"><span class="coin" style="background:#1e66d6">Ξ</span><div class="grow"><b>Ethereum</b><div style="color:#7f9aa8;font-size:11px">8.42 ETH</div></div><div style="text-align:right"><b>$27,104</b><div style="color:#4fd1a5;font-size:11px">+3.1%</div></div></div>
+    <div class="tok"><span class="coin" style="background:#f0a43a">₿</span><div class="grow"><b>Bitcoin</b><div style="color:#7f9aa8;font-size:11px">0.214 BTC</div></div><div style="text-align:right"><b>$14,380</b><div style="color:#4fd1a5;font-size:11px">+1.8%</div></div></div>
+    <div class="tok"><span class="coin" style="background:#16a37a">$</span><div class="grow"><b>USD Coin</b><div style="color:#7f9aa8;font-size:11px">6,818 USDC</div></div><div style="text-align:right"><b>$6,818</b><div style="color:#7f9aa8;font-size:11px">0.0%</div></div></div>
+    <div class="tok"><span class="coin" style="background:linear-gradient(135deg,#7fb0ee,#003853)">◎</span><div class="grow"><b>Solana</b><div style="color:#7f9aa8;font-size:11px">0.00 SOL</div></div><span class="pill" style="background:#143244;color:#7fb0ee;font-size:11px">+ Add</span></div>
+  </div>
+  <span class="homebar"></span>
+</div></div>
+
+<!-- Swap -->
+<div class="phone pb"><div class="screen"><span class="island"></span>
+  <div class="status"><span>9:41</span><span class="sig"><b></b><i></i></span></div>
+  <div class="pad">
+    <div style="font-size:22px;font-weight:800;letter-spacing:-0.02em;margin:8px 0 18px">Swap</div>
+    <div class="swapbox"><div class="row between" style="color:#7f9aa8;font-size:11px"><span>You pay</span><span>Balance 8.42</span></div>
+      <div class="row between" style="margin-top:10px"><span class="amt">1.50</span><span class="sel"><span class="coin" style="width:26px;height:26px;font-size:11px;background:#1e66d6">Ξ</span>ETH</span></div>
+      <div style="color:#7f9aa8;font-size:11px;margin-top:4px">≈ $4,828.50</div></div>
+    <div style="height:0;position:relative;z-index:2"><span style="position:absolute;left:50%;top:-18px;transform:translateX(-50%);width:40px;height:40px;border-radius:14px;background:#1e66d6;border:4px solid #06151d;display:grid;place-items:center;font-weight:800">↓</span></div>
+    <div class="swapbox" style="margin-top:8px"><div class="row between" style="color:#7f9aa8;font-size:11px"><span>You receive</span><span>Best rate</span></div>
+      <div class="row between" style="margin-top:10px"><span class="amt">4,812.9</span><span class="sel"><span class="coin" style="width:26px;height:26px;font-size:11px;background:#16a37a">$</span>USDC</span></div>
+      <div style="color:#7f9aa8;font-size:11px;margin-top:4px">1 ETH = 3,208.60 USDC</div></div>
+    <div style="margin-top:16px;line-height:2.1;font-size:12px">
+      <div class="row between"><span style="color:#7f9aa8">Network fee</span><b>$1.84</b></div>
+      <div class="row between"><span style="color:#7f9aa8">Price impact</span><b style="color:#4fd1a5">&lt; 0.01%</b></div>
+      <div class="row between"><span style="color:#7f9aa8">Route</span><b>ETH → USDC</b></div>
+    </div>
+    <div class="btn primary" style="width:100%;height:52px;border-radius:16px;margin-top:18px;font-size:15px">Review swap</div>
+    <div style="margin-top:22px;font-size:12px;font-weight:700">Recent</div>
+    <div class="tok" style="margin-top:10px"><span class="coin" style="width:32px;height:32px;font-size:12px;background:#f0a43a">₿</span><div class="grow"><b style="font-size:12px">BTC → ETH</b><div style="color:#7f9aa8;font-size:11px">Yesterday</div></div><b style="color:#4fd1a5;font-size:12px">Done</b></div>
+  </div>
+  <span class="homebar"></span>
+</div></div>
+</body>
+</html>
