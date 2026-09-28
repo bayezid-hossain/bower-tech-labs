@@ -3,7 +3,7 @@
 import { Container } from "@/components/ui/Container";
 import { LineBreaks } from "@/components/ui/LineBreaks";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/motion/Reveal";
+import { FadeIn } from "@/components/motion/FadeIn";
 import { CarouselControls, CarouselTrack } from "@/components/patterns/Carousel";
 import { PricingCard } from "@/components/patterns/PricingCard";
 import { pricingPlans, pricingSection } from "@/content/pricing";
@@ -16,7 +16,7 @@ export function Pricing() {
   return (
     <section id="pricing" aria-labelledby="pricing-title" className="pt-20 lg:pt-[199px]">
       <Container>
-        <Reveal>
+        <FadeIn>
           <SectionHeading
             titleId="pricing-title"
             align="center"
@@ -30,7 +30,7 @@ export function Pricing() {
             }
             subtitleClassName="lg:text-[17px]"
           />
-        </Reveal>
+        </FadeIn>
         <div className="mt-8 lg:mt-12 lg:mr-[calc(50%-50vw)]">
           <CarouselTrack trackRef={trackRef} label="Pricing plans">
             {pricingPlans.map((plan, i) => (

@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/motion/Reveal";
+import { FadeIn } from "@/components/motion/FadeIn";
 import { ProjectCard } from "@/components/patterns/ProjectCard";
 import { projects, projectsSection } from "@/content/projects";
 
@@ -8,15 +8,15 @@ export function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-title" className="pt-20 lg:pt-[159px]">
       <Container>
-        <Reveal>
+        <FadeIn>
           <SectionHeading titleId="projects-title" align="center" title={projectsSection.title} subtitle={projectsSection.subtitle} subtitleClassName="mt-[10px] lg:mt-[22px]" />
-        </Reveal>
+        </FadeIn>
         <ol className="mt-[39px] flex flex-col gap-6 lg:mt-[47px]">
           {projects.map((project, i) => (
             <li key={project.number}>
-              <Reveal>
+              <FadeIn>
                 <ProjectCard project={project} index={i} />
-              </Reveal>
+              </FadeIn>
             </li>
           ))}
         </ol>
