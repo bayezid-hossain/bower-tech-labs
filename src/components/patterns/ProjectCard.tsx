@@ -24,8 +24,10 @@ export function ProjectCard({ project, index, active = true, onSelect, className
           aria-current={active ? "true" : undefined}
           className={cn(
             "pointer-events-auto flex size-14 items-center justify-center rounded-tr-[4px] text-2xl transition-[color,background-color,transform] duration-200 active:scale-[0.98] [clip-path:polygon(8px_0,100%_0,100%_100%,0_100%,0_8px)]",
-            "focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white",
-            active ? "bg-navy-gradient text-white" : "bg-placeholder text-navy hover:bg-navy hover:text-white",
+            "focus-visible:outline-2",
+            active
+              ? "bg-navy-gradient text-white focus-visible:-outline-offset-4 focus-visible:outline-white"
+              : "bg-placeholder text-navy hover:bg-navy hover:text-white focus-visible:-outline-offset-4 focus-visible:outline-navy",
           )}
         >
           {project.number}
