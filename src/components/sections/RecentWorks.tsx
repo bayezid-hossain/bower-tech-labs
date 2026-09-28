@@ -6,7 +6,7 @@ import { recentWorksSection } from "@/content/recent-works";
 
 export function RecentWorks() {
   return (
-    <section aria-labelledby="recent-works-title" className="pt-20 lg:pt-[200px]">
+    <section aria-labelledby="recent-works-title" className="pt-20 lg:pt-[199px]">
       <Container>
         <Reveal>
           <SectionHeading

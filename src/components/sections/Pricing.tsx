@@ -14,7 +14,7 @@ export function Pricing() {
   const { before, emphasis, after } = pricingSection.subtitle;
 
   return (
-    <section id="pricing" aria-labelledby="pricing-title" className="pt-20 lg:pt-[198px]">
+    <section id="pricing" aria-labelledby="pricing-title" className="pt-20 lg:pt-[199px]">
       <Container>
         <Reveal>
           <SectionHeading

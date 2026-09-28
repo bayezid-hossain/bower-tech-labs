@@ -9,13 +9,19 @@ export function Process() {
     <section
       id="process"
       aria-labelledby="process-title"
-      className="mt-20 bg-page-alt py-20 lg:mt-0 lg:bg-transparent lg:pt-[181px] lg:pb-0"
+      className="mt-20 bg-page-alt py-20 lg:mt-0 lg:bg-transparent lg:pt-[180px] lg:pb-0"
     >
       <Container>
         <Reveal>
-          <SectionHeading titleId="process-title" align="center" title={processSection.title} subtitle={processSection.subtitle} />
+          <SectionHeading
+            titleId="process-title"
+            align="center"
+            title={processSection.title}
+            subtitle={processSection.subtitle}
+            titleClassName="lg:tracking-[-0.05em]"
+          />
         </Reveal>
-        <ol className="mx-auto mt-8 grid max-w-[1020px] gap-5 lg:mt-11 lg:grid-cols-2 lg:gap-6">
+        <ol className="mx-auto mt-8 grid max-w-[1020px] gap-5 lg:mt-[47px] lg:grid-cols-2 lg:gap-6">
           {processSteps.map((step, i) => (
             <li key={step.step}>
               <Reveal delay={(i % 2) * 100} className="h-full">

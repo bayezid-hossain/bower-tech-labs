@@ -13,7 +13,7 @@ export function Testimonials() {
   const controls = { onPrev: prev, onNext: next, canPrev, canNext };
 
   return (
-    <section id="testimonials" aria-labelledby="testimonials-title" className="pt-20 lg:pt-[116px]">
+    <section id="testimonials" aria-labelledby="testimonials-title" className="pt-20 lg:pt-[113px]">
       <Container>
         <div className="grid gap-8 lg:mr-[calc(50%-50vw)] lg:grid-cols-[540px_1fr] lg:gap-0">
           <div className="flex flex-col lg:justify-between">
@@ -22,7 +22,6 @@ export function Testimonials() {
                 titleId="testimonials-title"
                 title={testimonialsSection.title}
                 subtitle={testimonialsSection.subtitle}
-                subtitleClassName="lg:mt-6 lg:text-lg"
               />
             </Reveal>
             <CarouselControls {...controls} className="hidden lg:flex" />
