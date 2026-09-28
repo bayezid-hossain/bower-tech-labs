@@ -34,7 +34,7 @@ export function SectionHeading({
         <LineBreaks text={title} breakOn={titleBreakOn} />
       </Tag>
       {subtitle && (
-        <p className={cn("mt-3 text-[15px] leading-6 text-body lg:mt-5 lg:text-base", subtitleClassName)}>
+        <p className={cn("mt-3 text-[15px] leading-6 text-body lg:mt-[22px] lg:text-[17px] lg:tracking-[-0.035em]", subtitleClassName)}>
           {typeof subtitle === "string" ? <LineBreaks text={subtitle} /> : subtitle}
         </p>
       )}

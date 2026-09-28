@@ -11,7 +11,7 @@ export function Projects() {
         <Reveal>
           <SectionHeading titleId="projects-title" align="center" title={projectsSection.title} subtitle={projectsSection.subtitle} />
         </Reveal>
-        <ol className="mt-8 flex flex-col gap-6 lg:mt-12">
+        <ol className="mt-8 flex flex-col gap-6 lg:mt-[47px]">
           {projects.map((project, i) => (
             <li key={project.number}>
               <Reveal>
