@@ -9,3 +9,9 @@ export const navigation: Link[] = [
   { label: "FAQ", href: "#faq" },
   { label: "Contact Us", href: "#contact" },
 ];
+
+export const mobileMenu = {
+  openLabel: "Open menu",
+  closeLabel: "Close menu",
+  dialogLabel: "Menu",
+};

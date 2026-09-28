@@ -38,7 +38,7 @@ src/app/                 layout, page (composes sections), globals.css
 src/components/ui/       primitives: Button, IconButton, Badge, Container, SectionHeading, Card, Avatar, form/*
 src/components/motion/   MotionProvider, FadeIn, AnimatedText, RollingText, Marquee, DraggableMarquee
 src/components/patterns/ reusable composites: CurvedGallery, Carousel, PlayReel, ServiceCard, ProjectCard, ProjectStack, StepCard, TestimonialCard, PricingCard, TeamMember, LogoLockup, WhatsAppButton
-src/components/layout/   Navbar, Footer
+src/components/layout/   Navbar, MobileMenu (hamburger, < lg), Footer
 src/components/sections/ page sections (thin: read content, lay out patterns)
 src/content/             ALL copy + data (typed)
 src/hooks/  src/lib/  src/types/

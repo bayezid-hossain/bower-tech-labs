@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { LogoLockup } from "@/components/patterns/LogoLockup";
+import { MobileMenu } from "@/components/layout/MobileMenu";
 import { navigation } from "@/content/navigation";
 import { site } from "@/content/site";
 
@@ -20,14 +21,17 @@ export function Navbar() {
             ))}
           </ul>
         </nav>
-        <Button
-          href={site.primaryCta.href}
-          variant="flat"
-          size="sm"
-          className="h-9 px-[17px] text-[13px] lg:h-11 lg:px-5 lg:text-[15px]"
-        >
-          {site.primaryCta.label}
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button
+            href={site.primaryCta.href}
+            variant="flat"
+            size="sm"
+            className="h-9 px-[17px] text-[13px] lg:h-11 lg:px-5 lg:text-[15px]"
+          >
+            {site.primaryCta.label}
+          </Button>
+          <MobileMenu />
+        </div>
       </Container>
     </header>
   );
