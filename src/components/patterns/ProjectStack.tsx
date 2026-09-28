@@ -17,7 +17,7 @@ type SkipLinks = {
 type ProjectStackProps = { projects: Project[]; skip?: SkipLinks; className?: string };
 
 const skipLinkClasses =
-  "inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-medium tracking-[-0.02em] text-ink transition-[background-color,transform] duration-150 hover:bg-page active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy";
+  "inline-flex h-10 items-center gap-2 rounded-full px-5 text-[14px] font-medium tracking-[-0.02em] text-white transition-[background-color,transform] duration-150 hover:bg-white/15 active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
 /** Minimum time a card step owns the scroll (lets the smooth scroll land). */
 const STEP_MIN_MS = 650;
@@ -57,10 +57,10 @@ export function ProjectStack({ projects, skip, className }: ProjectStackProps) {
     const y = window.scrollY;
     const next = activeStackIndex(y, g.listTop, g.offsets, g.stickyTop);
     setActive((current) => (current === next ? current : next));
-    // The skip shortcut shows only while the stack is pinning cards.
+    // The skip shortcut shows from when the cards reach mid-screen until the last card has been shown.
     const first = stackScrollTarget(g.listTop, g.offsets, 0, g.stickyTop);
     const last = stackScrollTarget(g.listTop, g.offsets, g.offsets.length - 1, g.stickyTop);
-    const inStack = g.sticky && y >= first - 60 && y <= last + 60;
+    const inStack = g.sticky && y >= first - window.innerHeight / 2 && y <= last + 60;
     setEngaged((current) => (current === inStack ? current : inStack));
   }, [geometry]);
 
@@ -218,16 +218,16 @@ export function ProjectStack({ projects, skip, className }: ProjectStackProps) {
               initial={reduceMotion ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0, transition: { type: "spring", bounce: 0, duration: 0.4 } }}
               exit={reduceMotion ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0, y: 12, transition: { duration: 0.2 } }}
-              className="fixed bottom-6 left-1/2 z-30 flex -translate-x-1/2 items-center gap-1 rounded-full border border-line bg-surface/95 p-1 shadow-soft backdrop-blur-sm"
+              className="fixed bottom-6 left-1/2 z-30 flex -translate-x-1/2 items-center gap-1 rounded-full bg-navy-gradient p-1 shadow-button"
             >
               <a href={skip.prev.href} onClick={(event) => jump(event, skip.prev.href)} className={skipLinkClasses}>
-                <ArrowUpIcon size={14} weight="bold" aria-hidden="true" />
+                <ArrowUpIcon size={15} weight="bold" aria-hidden="true" />
                 {skip.prev.label}
               </a>
-              <span aria-hidden="true" className="h-5 w-px bg-line" />
+              <span aria-hidden="true" className="h-5 w-px bg-white/25" />
               <a href={skip.next.href} onClick={(event) => jump(event, skip.next.href)} className={skipLinkClasses}>
                 {skip.next.label}
-                <ArrowDownIcon size={14} weight="bold" aria-hidden="true" />
+                <ArrowDownIcon size={15} weight="bold" aria-hidden="true" />
               </a>
             </motion.nav>
           )}

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/Button";
 import type { Project } from "@/types/content";
+import { AnimatedText } from "@/components/motion/AnimatedText";
 
 type ProjectCardProps = {
   project: Project;
@@ -35,7 +36,7 @@ export function ProjectCard({ project, index, active = true, onSelect, className
       </div>
       <div className={cn("pointer-events-auto flex flex-col gap-4 rounded-3xl bg-surface p-5 lg:flex-row lg:gap-6 lg:p-6", index === 0 && "rounded-tr-none")}>
         <div className={cn("flex flex-col lg:w-[578px] lg:shrink-0 lg:justify-between", featured && "lg:p-6")}>
-          <p className="text-[13.5px] leading-5 tracking-[-0.05em] text-muted lg:text-[17px] lg:leading-5 lg:tracking-[-0.04em]">{project.eyebrow}</p>
+          <AnimatedText as="p" text={project.eyebrow} className="text-[13.5px] leading-5 tracking-[-0.05em] text-muted lg:text-[17px] lg:leading-5 lg:tracking-[-0.04em]" />
           <div className="mt-3 lg:mt-0">
             <h3
               className={cn(
@@ -43,9 +44,9 @@ export function ProjectCard({ project, index, active = true, onSelect, className
                 featured ? "lg:max-w-[400px]" : "lg:max-w-[520px]",
               )}
             >
-              {project.title}
+              <AnimatedText text={project.title} />
             </h3>
-            <p className="mt-[13px] max-w-[440px] text-[15.5px] leading-6 tracking-[-0.045em] text-body lg:mt-4 lg:text-[15px] lg:tracking-[-0.03em]">{project.description}</p>
+            <AnimatedText as="p" text={project.description} className="mt-[13px] max-w-[440px] text-[15.5px] leading-6 tracking-[-0.045em] text-body lg:mt-4 lg:text-[15px] lg:tracking-[-0.03em]" />
             <Button
               href={project.cta.href}
               variant={featured ? "primary" : "dark"}

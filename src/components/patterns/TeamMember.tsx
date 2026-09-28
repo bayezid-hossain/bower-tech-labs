@@ -1,6 +1,7 @@
 import { cn } from "@/lib/cn";
 import type { TeamMemberInfo } from "@/types/content";
 import Image from "next/image";
+import { AnimatedText } from "@/components/motion/AnimatedText";
 
 function initials(name: string) {
   return name
@@ -29,8 +30,8 @@ export function TeamMember({ member, className }: { member: TeamMemberInfo; clas
           </span>
         )}
       </div>
-      <p className="mt-4 whitespace-nowrap text-base font-medium leading-6 tracking-[-0.05em] text-black lg:mt-[15px] lg:text-[17px]">{member.name}</p>
-      <p className="mt-1 whitespace-nowrap text-[13px] leading-4 tracking-[-0.06em] text-role lg:mt-1.5">{member.role}</p>
+      <AnimatedText as="p" text={member.name} className="mt-4 whitespace-nowrap text-base font-medium leading-6 tracking-[-0.05em] text-black lg:mt-[15px] lg:text-[17px]" />
+      <AnimatedText as="p" text={member.role} className="mt-1 whitespace-nowrap text-[13px] leading-4 tracking-[-0.06em] text-role lg:mt-1.5" />
     </div>
   );
 }
