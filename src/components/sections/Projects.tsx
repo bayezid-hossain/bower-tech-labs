@@ -9,9 +9,9 @@ export function Projects() {
     <section id="projects" aria-labelledby="projects-title" className="pt-20 lg:pt-[159px]">
       <Container>
         <Reveal>
-          <SectionHeading titleId="projects-title" align="center" title={projectsSection.title} subtitle={projectsSection.subtitle} />
+          <SectionHeading titleId="projects-title" align="center" title={projectsSection.title} subtitle={projectsSection.subtitle} subtitleClassName="mt-[10px] lg:mt-[22px]" />
         </Reveal>
-        <ol className="mt-8 flex flex-col gap-6 lg:mt-[47px]">
+        <ol className="mt-[39px] flex flex-col gap-6 lg:mt-[47px]">
           {projects.map((project, i) => (
             <li key={project.number}>
               <Reveal>

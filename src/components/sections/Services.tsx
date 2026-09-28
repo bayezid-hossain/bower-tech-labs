@@ -12,7 +12,7 @@ export function Services() {
         <Reveal>
           <SectionHeading titleId="services-title" title={servicesSection.title} subtitle={servicesSection.subtitle} />
         </Reveal>
-        <ul className="mt-8 grid gap-5 lg:mt-12 lg:grid-cols-2">
+        <ul className="mt-[31px] grid gap-5 lg:mt-12 lg:grid-cols-2">
           {services.map((service, i) => (
             <li key={service.title}>
               <Reveal delay={(i % 2) * 100} className="h-full">
@@ -22,7 +22,7 @@ export function Services() {
           ))}
         </ul>
         <div className="mt-8 flex justify-center">
-          <Button href={servicesSection.cta.href} size="lg" className="h-12 w-full lg:h-14 lg:w-auto">
+          <Button href={servicesSection.cta.href} size="lg" className="h-12 w-full text-[15px] lg:h-14 lg:w-auto lg:text-[17px]">
             {servicesSection.cta.label}
           </Button>
         </div>
