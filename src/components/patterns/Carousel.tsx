@@ -27,7 +27,9 @@ export function CarouselTrack({ trackRef, label, itemCount, perPage, className, 
       aria-roledescription="carousel"
       aria-label={label}
       style={style}
-      className={cn("carousel-track flex min-w-0 snap-x snap-mandatory gap-6 overflow-x-auto scrollbar-none", className)}
+      // relative: absolutely positioned descendants (e.g. AnimatedText's sr-only copy) must stay inside the
+      // scroll container, or off-screen cards widen the page and mobile browsers zoom out.
+      className={cn("carousel-track relative flex min-w-0 snap-x snap-mandatory gap-6 overflow-x-auto scrollbar-none", className)}
     >
       {children}
       {Array.from({ length: spacerCount(itemCount, perPage.base) }, (_, i) => (

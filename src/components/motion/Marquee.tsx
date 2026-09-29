@@ -8,6 +8,8 @@ type MarqueeProps = {
   innerClassName?: string;
   duration?: number;
   fade?: boolean;
+  /** Travel direction of the content. */
+  direction?: "left" | "right";
 };
 
 /** Infinite horizontal scroll, optionally faded at the edges. Content is duplicated once; pauses on hover. */
@@ -18,6 +20,7 @@ export function Marquee({
   innerClassName,
   duration = 40,
   fade = true,
+  direction = "left",
 }: MarqueeProps) {
   return (
     <div
@@ -28,7 +31,11 @@ export function Marquee({
       )}
     >
       <div
-        className={cn("flex w-max animate-marquee group-hover:[animation-play-state:paused]", innerClassName)}
+        className={cn(
+          "flex w-max animate-marquee group-hover:[animation-play-state:paused]",
+          direction === "right" && "[animation-direction:reverse]",
+          innerClassName,
+        )}
         style={{ animationDuration: `${duration}s` }}
       >
         <div className={cn("flex shrink-0 items-center", trackClassName)}>{children}</div>
