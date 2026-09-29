@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/motion/FadeIn";
@@ -28,6 +29,11 @@ export function Process() {
             </li>
           ))}
         </ol>
+        <div className="mt-8 flex justify-center">
+          <Button href={processSection.cta.href} size="lg" className="h-12 w-full text-[15px] lg:h-14 lg:w-auto lg:text-[17px]">
+            {processSection.cta.label}
+          </Button>
+        </div>
       </Container>
     </section>
   );

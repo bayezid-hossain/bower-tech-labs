@@ -2,6 +2,7 @@ import type { ProcessStep } from "@/types/content";
 
 export const processSection = {
   title: "How We Work",
+  cta: { label: "Start a Project", href: "#contact" },
   subtitle: "No agency theater, no 6-week onboarding.\nFour steps from brief to launch.",
 };
 

@@ -2,7 +2,6 @@ import { cn } from "@/lib/cn";
 import { Avatar } from "@/components/ui/Avatar";
 import { Card } from "@/components/ui/Card";
 import type { Testimonial } from "@/types/content";
-import { AnimatedText } from "@/components/motion/AnimatedText";
 
 export function TestimonialCard({ testimonial, className }: { testimonial: Testimonial; className?: string }) {
   return (
@@ -10,11 +9,11 @@ export function TestimonialCard({ testimonial, className }: { testimonial: Testi
       <figcaption className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-[13px]">
         <Avatar src={testimonial.avatar.src} alt={testimonial.avatar.alt} size={56} />
         <div>
-          <AnimatedText as="p" text={testimonial.name} className="text-[17px] font-semibold leading-6 tracking-[-0.02em] text-name" />
-          <AnimatedText as="p" text={testimonial.role} className="mt-0.5 text-xs leading-4 text-caption lg:tracking-[-0.02em]" />
+          <p className="text-[17px] font-semibold leading-6 tracking-[-0.02em] text-name">{testimonial.name}</p>
+          <p className="mt-0.5 text-xs leading-4 text-caption lg:tracking-[-0.02em]">{testimonial.role}</p>
         </div>
       </figcaption>
-      <blockquote className="mt-8 text-base leading-6 text-label lg:mt-[41px] lg:text-[16.5px] lg:leading-7 lg:tracking-[-0.04em]"><AnimatedText text={testimonial.quote} /></blockquote>
+      <blockquote className="mt-8 text-base leading-6 text-label lg:mt-[41px] lg:text-[16.5px] lg:leading-7 lg:tracking-[-0.04em]">{testimonial.quote}</blockquote>
     </Card>
   );
 }

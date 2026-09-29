@@ -36,13 +36,14 @@ export function SectionHeading({
         as={as}
         id={titleId}
         text={title}
+        effect="roll"
         breakOn={titleBreakOn}
         className={cn("text-[32px] font-semibold leading-[1.15] tracking-[-0.04em] text-ink lg:text-[48px]", titleClassName)}
       />
       {typeof subtitle === "string" ? (
-        <AnimatedText as="p" text={subtitle} delay={0.1} className={subtitleClasses} />
+        <AnimatedText as="p" text={subtitle} delay={0.3} className={subtitleClasses} />
       ) : subtitle ? (
-        <FadeIn as="p" y={10} delay={0.1} className={subtitleClasses}>
+        <FadeIn as="p" y={10} delay={0.3} className={subtitleClasses}>
           {subtitle}
         </FadeIn>
       ) : null}

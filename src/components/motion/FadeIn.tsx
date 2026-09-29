@@ -21,7 +21,7 @@ type FadeInProps = {
 export function FadeIn({ as = "div", delay = 0, y = 20, trigger = "inView", className, children }: FadeInProps) {
   const reduce = useReducedMotion();
   const Tag = tags[as];
-  const shown = { opacity: 1, y: 0, transition: { type: "spring" as const, bounce: 0, duration: 1.6, delay } };
+  const shown = { opacity: 1, y: 0, transition: { type: "spring" as const, bounce: 0, duration: 1, delay } };
   // Replays every time the element re-enters the viewport. "mount" content (hero) is already in view on load,
   // so it plays immediately and stays shown until it has fully left the screen.
   const play = { whileInView: shown, viewport: { once: false, amount: trigger === "mount" ? 0 : 0.2 } };

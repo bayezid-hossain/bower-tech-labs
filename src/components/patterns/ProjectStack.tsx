@@ -77,6 +77,28 @@ export function ProjectStack({ projects, skip, className }: ProjectStackProps) {
     };
   }, [update]);
 
+  // The last card reserves a full screen (so the pinned stack can't drift on the final step), but that reserve
+  // is empty space below the card. Pull the next section up over it so there's no extra gap after the stack.
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+    const tuck = () => {
+      const last = list.lastElementChild as HTMLElement | null;
+      const card = last?.firstElementChild as HTMLElement | null;
+      if (!last || !card) return;
+      const sticky = getComputedStyle(last).position === "sticky";
+      list.style.marginBottom = sticky ? `${card.offsetHeight - last.offsetHeight}px` : "";
+    };
+    tuck();
+    const observer = new ResizeObserver(tuck);
+    observer.observe(list);
+    window.addEventListener("resize", tuck);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", tuck);
+    };
+  }, []);
+
   // One card per gesture. Wheel/key/touch listeners (not scroll listeners) so the gesture can be cancelled before it moves the page.
   useEffect(() => {
     let stepping = false;

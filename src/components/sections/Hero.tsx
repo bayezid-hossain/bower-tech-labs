@@ -35,11 +35,11 @@ export function Hero() {
           <AnimatedText
             as="p"
             trigger="mount"
-            delay={0.9}
+            delay={0.5}
             text={hero.description}
             className="mt-[23px] text-[16px] leading-5 tracking-[-0.058em] text-body lg:mt-[25px] lg:text-[17px] lg:leading-6 lg:tracking-[-0.03em]"
           />
-          <FadeIn trigger="mount" delay={1.3} className="mt-10 flex flex-col gap-4 md:flex-row md:justify-center lg:mt-[39px] lg:justify-start lg:gap-4">
+          <FadeIn trigger="mount" delay={0.8} className="mt-10 flex flex-col gap-4 md:flex-row md:justify-center lg:mt-[39px] lg:justify-start lg:gap-4">
             <Button href={hero.primaryCta.href} size="lg" className="h-12 w-full text-[15px] md:w-auto lg:h-14 lg:pt-1 lg:text-[17px]">
               {hero.primaryCta.label}
             </Button>
