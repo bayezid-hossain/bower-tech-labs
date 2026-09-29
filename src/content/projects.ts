@@ -3,7 +3,7 @@ import type { Project } from "@/types/content";
 const title = "Meticulous Digital Visual Craftsmanship for Global Brands.";
 const description =
   "Bower Tech Labs crafts premium UI/UX and web designs that turn visions into high-performing digital experiences—brand strategy, development, and beyond.";
-const cta = { label: "See Project Details", href: "#contact" };
+const cta = { label: "See Project Details", href: "#contact-form" };
 
 export const projectsSection = {
   title: "Our Projects",

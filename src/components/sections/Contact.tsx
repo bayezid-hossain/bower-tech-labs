@@ -31,6 +31,7 @@ export function Contact() {
         </div>
         <FadeIn delay={0.1}>
           <ContactForm
+            id="contact-form"
             fields={contactForm.fields}
             submitLabel={contactForm.submitLabel}
             altPrompt={contactForm.altPrompt}

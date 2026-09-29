@@ -12,6 +12,8 @@ import { Textarea } from "@/components/ui/form/Textarea";
 import type { ContactField, ContactFieldName } from "@/types/content";
 
 type ContactFormProps = {
+  /** Anchor for "#…" links that should land on the form itself. */
+  id?: string;
   fields: ContactField[];
   submitLabel: string;
   altPrompt: string;
@@ -23,7 +25,7 @@ type ContactFormProps = {
 
 type ControlEvent = ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
 
-export function ContactForm({ fields, submitLabel, altPrompt, altCta, altHref, successMessage, className }: ContactFormProps) {
+export function ContactForm({ id, fields, submitLabel, altPrompt, altCta, altHref, successMessage, className }: ContactFormProps) {
   const [values, setValues] = useState<ContactValues>(emptyContactValues);
   const [errors, setErrors] = useState<ContactErrors>({});
   const [submitted, setSubmitted] = useState(false);
@@ -50,7 +52,7 @@ export function ContactForm({ fields, submitLabel, altPrompt, altCta, altHref, s
   };
 
   return (
-    <Card className={cn("p-5 lg:p-8", className)}>
+    <Card id={id} className={cn("scroll-mt-6 p-5 lg:p-8", className)}>
       <form noValidate onSubmit={handleSubmit}>
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-8">
           {fields.map((field) => {

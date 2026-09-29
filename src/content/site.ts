@@ -4,5 +4,5 @@ export const site = {
   whatsappUrl: "https://wa.me/",
   whatsappLabel: "Quick Chat – WhatsApp",
   bookCallUrl: "#contact",
-  primaryCta: { label: "Become a Client", href: "#contact" },
+  primaryCta: { label: "Become a Client", href: "#contact-form" },
 } as const;

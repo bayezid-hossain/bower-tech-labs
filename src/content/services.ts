@@ -4,7 +4,7 @@ export const servicesSection = {
   title: "What We Do, Full Stop",
   subtitle:
     "Strategy, design, and build — one team, one invoice, zero handoffs.\nFrom wireframe to live URL, you talk to the same people who actually do the work.",
-  cta: { label: "Start a Project", href: "#contact" },
+  cta: { label: "Start a Project", href: "#contact-form" },
 };
 
 export const services: Service[] = [

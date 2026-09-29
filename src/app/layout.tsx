@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import { MotionProvider } from "@/components/motion/MotionProvider";
+import { HashLinkScroll } from "@/components/layout/HashLinkScroll";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], axes: ["opsz"], variable: "--font-inter", display: "swap" });
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={inter.variable}>
       <body className="bg-page font-sans text-ink antialiased">
         <MotionProvider>{children}</MotionProvider>
+        <HashLinkScroll />
       </body>
     </html>
   );

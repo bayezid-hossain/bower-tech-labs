@@ -5,7 +5,7 @@ export const hero = {
   title: "Product Design That\nShips in Days, Not Months.",
   description:
     "SaaS dashboards, marketing sites, and digital products — designed, built,\nand ready to test while agencies are still scheduling their third discovery call.",
-  primaryCta: { label: "Request a Quote", href: "#contact" },
+  primaryCta: { label: "Request a Quote", href: "#contact-form" },
   galleryLabel: "Featured work gallery",
   gallery: [
     { src: "/images/hero/gallery-1.jpg", alt: "SaaS analytics dashboard design" },
