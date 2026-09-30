@@ -33,7 +33,7 @@ Components must be modular and reusable for future pages.
 | `assets/Frame 2147241938.png` (2880×22492) | Same desktop at 2×, used for measuring |
 | `assets/Frame 2147241977.png` (375×11751) | Mobile source of truth |
 | `assets/Frame 2147241907.png` (1440×705) | Footer at full size |
-| `assets/Frame 2147241930.png` (202×32) | Logo lockup (mark + wordmark) |
+| `assets/logo_mobile.png` | Mobile logo source (added 2026-09-29; resized into `public/brand/logo-mobile.png`) |
 | `assets/Group 1413375668*.png` (25–40px) | Logo mark variants (favicon, footer) |
 | `assets/image 639.png` (481×496) | Hero glass logo render |
 

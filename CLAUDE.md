@@ -62,7 +62,7 @@ tests/visual/
 | `assets/Frame 2147241938.png` | Desktop @2×, for measuring |
 | `assets/Frame 2147241977.png` | Mobile source of truth |
 | `assets/Frame 2147241907.png` | Footer full size |
-| `assets/Frame 2147241930.png` | Logo lockup |
+| `assets/logo_mobile.png` | Mobile logo source (resized into `public/brand/logo-mobile.png`) |
 | `assets/Group 1413375668*.png` | Logo mark variants |
 | `assets/image 639.png` | Hero glass logo |
 
