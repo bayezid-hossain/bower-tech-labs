@@ -115,7 +115,7 @@ export function MobileMenu() {
                       <a
                         href={link.href}
                         onClick={(event) => onNavigate(event, link.href)}
-                        className="block py-2 text-[22px] font-medium leading-7 tracking-[-0.03em] text-ink transition-colors hover:text-navy"
+                        className="block py-2 text-lg font-medium leading-6 tracking-[-0.02em] text-ink transition-colors hover:text-navy"
                       >
                         {link.label}
                       </a>
