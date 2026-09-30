@@ -15,7 +15,7 @@ export function LogoLockup({ variant = "nav", className }: LogoLockupProps) {
     <Link href="/" aria-label="Bower Tech Labs home" className={cn("inline-flex shrink-0", className)}>
       {variant === "nav" && (
         // Phones/tablets use the dedicated mobile lockup.
-        <Image src="/brand/logo-mobile.png" alt="Bower Tech Labs" width={127} height={32} preload className="h-8 w-auto lg:hidden" />
+        <Image src="/brand/logo-mobile.png" alt="Bower Tech Labs" width={126} height={32} preload className="h-8 w-auto lg:hidden" />
       )}
       <Image
         src={v.src}

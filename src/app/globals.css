@@ -55,10 +55,13 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Keep anchor targets clear of the sticky mobile navbar. */
-@media (width < 64rem) {
+/* Keep anchor targets clear of the sticky navbar (84px tall below lg, 92px from lg). */
+html {
+  scroll-padding-top: 5.25rem;
+}
+@media (width >= 64rem) {
   html {
-    scroll-padding-top: 5.25rem;
+    scroll-padding-top: 5.75rem;
   }
 }
 
@@ -96,7 +99,7 @@ body {
 }
 
 /* Our Projects: cards pin and stack; each tab stays visible (tabs are staggered 80px). */
-/* Below lg the navbar is sticky (84px tall), so pinned cards sit just under it. */
+/* Below lg the navbar is 84px tall; pinned cards sit just under it. */
 @media (min-height: 780px) {
   .project-stack-item {
     position: sticky;
@@ -105,11 +108,12 @@ body {
     min-height: calc(100dvh - 5.75rem);
   }
 }
+/* From lg the navbar is sticky too (92px), so pinned cards sit 16px below it. */
 @media (width >= 64rem) and (min-height: 720px) {
   .project-stack-item {
     position: sticky;
-    top: 2.5rem;
-    min-height: calc(100dvh - 2.5rem);
+    top: 6.75rem;
+    min-height: calc(100dvh - 6.75rem);
   }
 }
 /* Note: the last card reserves the full screen too. Sticky items can't stay pinned past the end of their list,

@@ -2,12 +2,13 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { LogoLockup } from "@/components/patterns/LogoLockup";
 import { MobileMenu } from "@/components/layout/MobileMenu";
+import { StickyHeader } from "@/components/layout/StickyHeader";
 import { navigation } from "@/content/navigation";
 import { site } from "@/content/site";
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-40 bg-page/95 backdrop-blur-sm lg:relative lg:z-10 lg:bg-transparent lg:backdrop-blur-none">
+    <StickyHeader className="sticky top-0 z-40 bg-page/95 backdrop-blur-sm">
       <Container className="relative flex items-center justify-between py-6">
         <LogoLockup />
         <nav aria-label="Primary" className="hidden lg:absolute lg:left-1/2 lg:block lg:-translate-x-1/2">
@@ -33,6 +34,6 @@ export function Navbar() {
           <MobileMenu />
         </div>
       </Container>
-    </header>
+    </StickyHeader>
   );
 }
