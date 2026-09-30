@@ -1,7 +1,7 @@
 # Carousel Edge Arrows on Phones — Design
 
 Date: 2026-09-30
-Status: Approved by user
+Status: Superseded (2026-09-30). Edge arrows looked cramped and a follow-the-card auto-height was rejected by the user; the fix shipped instead is tighter bullet spacing on phones (pricing cards are now at most ~449px tall at 375px), which keeps the existing ‹ • • › controls on screen even on a 375×667 phone.
 
 ## Problem
 
