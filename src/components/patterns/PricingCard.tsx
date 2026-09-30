@@ -18,7 +18,7 @@ export function PricingCard({ plan, className }: { plan: PricingPlan; className?
         <p className="text-base font-medium tracking-[-0.02em] text-ink lg:text-lg lg:tracking-[-0.05em]">{plan.packageName}</p>
         <p className="text-[26px] font-semibold leading-8 tracking-[-0.04em] text-ink lg:text-2xl lg:leading-8 lg:tracking-[-0.03em]">{plan.price}</p>
       </div>
-      <ScrollFade className="mt-4 max-h-[9.5rem] lg:max-h-none">
+      <ScrollFade className="mt-4 max-h-48 lg:max-h-none">
         <BulletList items={plan.features} itemClassName="text-[15px] leading-7 text-body lg:gap-[9px] lg:text-[15px] lg:leading-8 lg:tracking-[-0.04em] lg:before:size-[5px] lg:before:-translate-y-[0.15em]" />
       </ScrollFade>
     </Card>
