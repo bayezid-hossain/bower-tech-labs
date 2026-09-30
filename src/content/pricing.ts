@@ -11,6 +11,7 @@ const designFeatures = [
 ];
 
 export const pricingSection = {
+  moreFeaturesLabel: "Show more features",
   title: "Straightforward Pricing, No Games.",
   subtitle: {
     before: "Not sure which tier fits? ",

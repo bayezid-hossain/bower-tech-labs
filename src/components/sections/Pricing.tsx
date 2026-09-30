@@ -37,7 +37,7 @@ export function Pricing() {
         >
           {pricingPlans.map((plan, i) => (
             <div key={i} className="carousel-item">
-              <PricingCard plan={plan} className="h-full" />
+              <PricingCard plan={plan} moreLabel={pricingSection.moreFeaturesLabel} className="h-full" />
             </div>
           ))}
         </CarouselTrack>

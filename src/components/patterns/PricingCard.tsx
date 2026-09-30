@@ -5,7 +5,7 @@ import { ScrollFade } from "@/components/ui/ScrollFade";
 import { Card } from "@/components/ui/Card";
 import type { PricingPlan } from "@/types/content";
 
-export function PricingCard({ plan, className }: { plan: PricingPlan; className?: string }) {
+export function PricingCard({ plan, moreLabel, className }: { plan: PricingPlan; moreLabel: string; className?: string }) {
   return (
     <Card as="article" className={cn("p-5 lg:p-6 lg:pb-5", className)}>
       <div className="flex items-center justify-between gap-4 border-b border-line pb-6 lg:pb-[23px]">
@@ -18,7 +18,7 @@ export function PricingCard({ plan, className }: { plan: PricingPlan; className?
         <p className="text-base font-medium tracking-[-0.02em] text-ink lg:text-lg lg:tracking-[-0.05em]">{plan.packageName}</p>
         <p className="text-[26px] font-semibold leading-8 tracking-[-0.04em] text-ink lg:text-2xl lg:leading-8 lg:tracking-[-0.03em]">{plan.price}</p>
       </div>
-      <ScrollFade className="mt-4 max-h-48 lg:max-h-none">
+      <ScrollFade className="mt-4 max-h-48 lg:max-h-none" moreLabel={moreLabel}>
         <BulletList items={plan.features} itemClassName="text-[15px] leading-7 text-body lg:gap-[9px] lg:text-[15px] lg:leading-8 lg:tracking-[-0.04em] lg:before:size-[5px] lg:before:-translate-y-[0.15em]" />
       </ScrollFade>
     </Card>
