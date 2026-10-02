@@ -27,7 +27,7 @@ export function PricingCard({ plan, moreLabel, overlay, className }: PricingCard
       </ScrollFade>
       {overlay && (
         // Desktop only: on hover (or keyboard focus inside the card) the card blurs behind a call-to-action layer.
-        <div className="pointer-events-none absolute inset-0 hidden flex-col items-center justify-center gap-6 rounded-3xl bg-surface/70 px-8 text-center opacity-0 backdrop-blur-md transition-opacity duration-300 group-focus-within/card:pointer-events-auto group-focus-within/card:opacity-100 group-hover/card:pointer-events-auto group-hover/card:opacity-100 lg:flex">
+        <div className="pointer-events-none absolute inset-0 hidden flex-col items-center justify-center gap-6 rounded-3xl bg-surface/55 px-8 text-center opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-focus-within/card:pointer-events-auto group-focus-within/card:opacity-100 group-hover/card:pointer-events-auto group-hover/card:opacity-100 lg:flex">
           <p className="max-w-[300px] text-[15px] leading-6 tracking-[-0.02em] text-ink">{overlay.text}</p>
           <div className="flex w-full flex-col gap-3">
             <Button href={overlay.bookHref} size="md" className="h-12 w-full text-[15px]">
