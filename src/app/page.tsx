@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { About } from "@/components/sections/About";
 import { ClientLogos } from "@/components/sections/ClientLogos";
 import { Contact } from "@/components/sections/Contact";
+import { Faq } from "@/components/sections/Faq";
 import { Hero } from "@/components/sections/Hero";
 import { Pricing } from "@/components/sections/Pricing";
 import { Process } from "@/components/sections/Process";
@@ -25,6 +26,7 @@ export default function Home() {
         <RecentWorks />
         <Testimonials />
         <Pricing />
+        <Faq />
         <Contact />
       </main>
       <Footer />

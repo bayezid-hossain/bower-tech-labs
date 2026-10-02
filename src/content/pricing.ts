@@ -12,6 +12,12 @@ const designFeatures = [
 
 export const pricingSection = {
   moreFeaturesLabel: "Show more features",
+  /** Desktop hover overlay on every pricing card. */
+  overlay: {
+    text: "No fluff. Just fast, clean, startup/market ready design. Unlimited revisions. Fixed and flat pricing. No surprises.",
+    bookLabel: "Book a Free Call",
+    bookHref: "#contact-form",
+  },
   title: "Straightforward Pricing, No Games.",
   subtitle: {
     before: "Not sure which tier fits? ",

@@ -52,3 +52,7 @@ export type ContactField = {
   options?: SelectOption[];
   fullWidth?: boolean;
 };
+
+export type FaqItem = { question: string; answer: string };
+
+export type PricingOverlay = { text: string; bookLabel: string; bookHref: string; whatsappLabel: string; whatsappHref: string };

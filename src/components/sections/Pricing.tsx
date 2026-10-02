@@ -6,11 +6,13 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CarouselControls, CarouselTrack } from "@/components/patterns/Carousel";
 import { PricingCard } from "@/components/patterns/PricingCard";
 import { pricingPlans, pricingSection } from "@/content/pricing";
+import { site } from "@/content/site";
 import { usePagedCarousel } from "@/hooks/usePagedCarousel";
 
 export function Pricing() {
   const carousel = usePagedCarousel(pricingPlans.length);
   const { before, emphasis, after } = pricingSection.subtitle;
+  const overlay = { ...pricingSection.overlay, whatsappLabel: site.whatsappLabel, whatsappHref: site.whatsappUrl };
 
   return (
     <section id="pricing" aria-labelledby="pricing-title" className="pt-20 lg:pt-[199px]">
@@ -37,7 +39,7 @@ export function Pricing() {
         >
           {pricingPlans.map((plan, i) => (
             <div key={i} className="carousel-item">
-              <PricingCard plan={plan} moreLabel={pricingSection.moreFeaturesLabel} className="h-full" />
+              <PricingCard plan={plan} moreLabel={pricingSection.moreFeaturesLabel} overlay={overlay} className="h-full" />
             </div>
           ))}
         </CarouselTrack>
